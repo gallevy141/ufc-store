@@ -8,7 +8,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import MainPage from './pages/MainPage'
 import LoginPage from './pages/LoginPage'
-import RegisterPage from './pages/RegisterPage'
+import Register from './pages/RegisterPage'
 
 function App() {
   return (
