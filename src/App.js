@@ -7,7 +7,7 @@ import 'font-awesome/css/font-awesome.min.css';
 import Header from './components/Header'
 import Footer from './components/Footer'
 import MainPage from './pages/MainPage'
-import LoginPage from './pages.LoginPage'
+import LoginPage from './pages/LoginPage'
 
 function App() {
   return (
