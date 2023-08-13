@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Row, Col, Form, Button } from 'react-bootstrap'
-import Header from './Header'
-import Footer from './Footer'
+import Header from './components/Header'
+import Footer from './components/Footer'
 
 function LoginPage() {
   return (
