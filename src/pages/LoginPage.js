@@ -2,6 +2,7 @@ import React from 'react'
 import { Container, Row, Col, Form, Button } from 'react-bootstrap'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import { Link } from 'react-router-dom'
 
 function LoginPage() {
   return (
