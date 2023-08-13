@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom'
 function LoginPage() {
   return (
     <div>
-      <Header />
 
       <Container className="mt-5">
         <Row className="justify-content-center">
@@ -37,7 +36,6 @@ function LoginPage() {
         </Row>
       </Container>
 
-      <Footer />
     </div>
   )
 }
