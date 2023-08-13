@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Row, Col, Form, Button } from 'react-bootstrap'
-import Header from './components/Header'
-import Footer from './components/Footer'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 import { Link } from 'react-router-dom'
 
 function LoginPage() {
@@ -31,7 +31,7 @@ function LoginPage() {
               </div>
             </Form>
             <p className="mt-3 text-center">
-              Don't have an account? <a href="/register">Come Register</a>
+              Don't have an account? <Link to="/register">Come Register</Link>
             </p>
           </Col>
         </Row>
