@@ -9,6 +9,7 @@ import Footer from './components/Footer'
 import MainPage from './pages/MainPage'
 import LoginPage from './pages/LoginPage'
 import Register from './pages/RegisterPage'
+import Browse from './pages/Browse'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
               <Route path="/" element={<MainPage />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/register" element={<Register />} />
+              <Route path="/browse" element={<Browse />} />
               {/*other routes here as needed */}
           </Routes>
           <Footer />
