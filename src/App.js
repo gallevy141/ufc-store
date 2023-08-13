@@ -9,19 +9,16 @@ import Footer from './components/Footer'
 import MainPage from './pages/MainPage'
 
 function App() {
-    return (
-        <Router>
-            <div className="App">
-                <Header />
-                
-                <Switch>
-                    <Route path="/" exact component={MainPage} />
-                </Switch>
-
-                <Footer />
-            </div>
-        </Router>
-    )
+  return (
+      <Router>
+          <Header />
+          <Routes>
+              <Route path="/" element={<MainPage />} />
+              {/*other routes here as needed */}
+          </Routes>
+          <Footer />
+      </Router>
+  )
 }
 
 export default App
