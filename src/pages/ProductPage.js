@@ -1,10 +1,13 @@
 import React from 'react'
 import { Container, Row, Col, Button, Card } from 'react-bootstrap'
+import { useParams } from 'react-router-dom'
 
 function ProductPage() {
+    const { productId } = useParams()
+
     return (
         <Container>
-
+            
             <Row className="my-4">
                 <Col md={6}>
                     <img src="product-image-url-here" alt="Product Name" className="img-fluid" />
