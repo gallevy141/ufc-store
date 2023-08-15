@@ -26,7 +26,7 @@ const Browse = () => {
             <Row>
                 {/* Example product. map over an array of products to generate these. */}
                 <Col xs={12} md={4} lg={3} className="mb-4">
-                    <Link to={`/product/${productIdHere}`} className="text-decoration-none text-dark">
+                    {/*<Link to={`/product/${productIdHere}`} className="text-decoration-none text-dark">*/}
                         <Card>
                             <Card.Img variant="top" src="path_to_product1_image.jpg" />
                             <Card.Body>
@@ -34,7 +34,7 @@ const Browse = () => {
                                 <Card.Text>Product description or price.</Card.Text>
                             </Card.Body>
                         </Card>
-                    </Link>
+                    {/*</Link>*/}
                 </Col>
                 {/* Repeat above Col for more products */}
             </Row>
