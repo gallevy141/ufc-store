@@ -21,7 +21,7 @@ function App() {
               <Route path="/login" element={<LoginPage />} />
               <Route path="/register" element={<Register />} />
               <Route path="/browse" element={<Browse />} />
-              <Route path="//product/:productId" element={<ProductPage />} />
+              <Route path="/product/:productId" element={<ProductPage />} />
               {/*other routes here as needed */}
           </Routes>
           <Footer />
