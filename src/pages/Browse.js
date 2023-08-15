@@ -1,5 +1,6 @@
-import React from 'react';
-import { Container, Row, Col, Image, Dropdown, DropdownButton, Card } from 'react-bootstrap';
+import React from 'react'
+import { Container, Row, Col, Image, Dropdown, DropdownButton, Card } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 const Browse = () => {
     return (
@@ -25,13 +26,15 @@ const Browse = () => {
             <Row>
                 {/* Example product. map over an array of products to generate these. */}
                 <Col xs={12} md={4} lg={3} className="mb-4">
-                    <Card>
-                        <Card.Img variant="top" src="path_to_product1_image.jpg" />
-                        <Card.Body>
-                            <Card.Title>Product Name 1</Card.Title>
-                            <Card.Text>Product description or price.</Card.Text>
-                        </Card.Body>
-                    </Card>
+                    <Link to={`/product/${productIdHere}`} className="text-decoration-none text-dark">
+                        <Card>
+                            <Card.Img variant="top" src="path_to_product1_image.jpg" />
+                            <Card.Body>
+                                <Card.Title>Product Name 1</Card.Title>
+                                <Card.Text>Product description or price.</Card.Text>
+                            </Card.Body>
+                        </Card>
+                    </Link>
                 </Col>
                 {/* Repeat above Col for more products */}
             </Row>
