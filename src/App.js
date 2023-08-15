@@ -10,6 +10,7 @@ import MainPage from './pages/MainPage'
 import LoginPage from './pages/LoginPage'
 import Register from './pages/RegisterPage'
 import Browse from './pages/Browse'
+import ProductPage from './pages/ProductPage'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
               <Route path="/login" element={<LoginPage />} />
               <Route path="/register" element={<Register />} />
               <Route path="/browse" element={<Browse />} />
+              <Route path="//product/:productId" element={<ProductPage />} />
               {/*other routes here as needed */}
           </Routes>
           <Footer />
