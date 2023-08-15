@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import 'font-awesome/css/font-awesome.min.css';
+import 'font-awesome/css/font-awesome.min.css'
 
 //Import components
 import Header from './components/Header'
@@ -11,6 +11,8 @@ import LoginPage from './pages/LoginPage'
 import Register from './pages/RegisterPage'
 import Browse from './pages/Browse'
 import ProductPage from './pages/ProductPage'
+import CartPage from './pages/CartPage'
+
 
 function App() {
   return (
@@ -22,6 +24,7 @@ function App() {
               <Route path="/register" element={<Register />} />
               <Route path="/browse" element={<Browse />} />
               <Route path="/product/:productId" element={<ProductPage />} />
+              <Route path="/cart" element={<CartPage />} />
               {/*other routes here as needed */}
           </Routes>
           <Footer />
