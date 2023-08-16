@@ -12,6 +12,7 @@ import Register from './pages/RegisterPage'
 import Browse from './pages/Browse'
 import ProductPage from './pages/ProductPage'
 import CartPage from './pages/CartPage'
+import CheckoutPage from './pages/CheckoutPage'
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
               <Route path="/browse" element={<Browse />} />
               <Route path="/product/:productId" element={<ProductPage />} />
               <Route path="/cart" element={<CartPage />} />
+              <Route path="/checkout" element={<CheckoutPage />} />
               {/*other routes here as needed */}
           </Routes>
           <Footer />
