@@ -1,5 +1,6 @@
 import React from 'react'
 import { Container, Row, Col, Button, Dropdown, Card } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 function CheckoutPage() {
     return (
@@ -32,7 +33,7 @@ function CheckoutPage() {
                     </Dropdown>
                 </Col>
                 <Col md={4} className="text-right">
-                    <Button variant="primary">Confirm Order</Button>
+                <Button as={Link} to="/receipt" variant="primary">Confirm Order</Button>
                 </Col>
             </Row>
         </Container>
