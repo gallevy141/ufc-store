@@ -1,14 +1,14 @@
 import React from 'react'
-import { Container, Row, Col, Image, Jumbotron } from 'react-bootstrap';
+import { Container, Row, Col, Image } from 'react-bootstrap'
 
 function AboutUs() {
     return (
         <Container fluid>
 
-            <Jumbotron className="my-4 bg-light text-center">
+            <div className="my-4 bg-light text-center py-4">
                 <h2>"We Are The Most Entertaining Sport On The Planet"</h2>
                 <footer className="blockquote-footer">Dana White</footer>
-            </Jumbotron>
+            </div>
 
             <Row className="my-4">
                 <Col md={6}>
