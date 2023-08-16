@@ -15,7 +15,8 @@ import CartPage from './pages/CartPage'
 import CheckoutPage from './pages/CheckoutPage'
 import ReceiptPage from './pages/ReceiptPage'
 import ProfilePage from './pages/ProfilePage'
-
+import AboutPage from './pages/AboutPage
+'
 function App() {
   return (
       <Router>
@@ -30,6 +31,7 @@ function App() {
               <Route path="/checkout" element={<CheckoutPage />} />
               <Route path="/receipt" element={<ReceiptPage />} />
               <Route path="/profile" element={<ProfilePage />} />
+              <Route path="/about" element={<AboutPage />} />
               {/*other routes here as needed */}
           </Routes>
           <Footer />
