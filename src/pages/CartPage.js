@@ -1,5 +1,6 @@
 import React from 'react'
 import { Container, Row, Col, Button, Dropdown, Card } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 function CartPage() {
     return (
@@ -37,7 +38,7 @@ function CartPage() {
             <Row className="align-items-center">
                 <Col>Total: $xx.xx</Col>
                 <Col className="text-right">
-                    <Button variant="primary">Checkout</Button>
+                <Button as={Link} to="/checkout" variant="primary">Checkout</Button>
                 </Col>
             </Row>
         </Container>
