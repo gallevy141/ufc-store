@@ -13,7 +13,7 @@ import Browse from './pages/Browse'
 import ProductPage from './pages/ProductPage'
 import CartPage from './pages/CartPage'
 import CheckoutPage from './pages/CheckoutPage'
-
+import ReceiptPage from './pages/ReceiptPage'
 
 function App() {
   return (
@@ -27,6 +27,7 @@ function App() {
               <Route path="/product/:productId" element={<ProductPage />} />
               <Route path="/cart" element={<CartPage />} />
               <Route path="/checkout" element={<CheckoutPage />} />
+              <Route path="/receipt" element={<ReceiptPage />} />
               {/*other routes here as needed */}
           </Routes>
           <Footer />
