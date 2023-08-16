@@ -15,8 +15,8 @@ import CartPage from './pages/CartPage'
 import CheckoutPage from './pages/CheckoutPage'
 import ReceiptPage from './pages/ReceiptPage'
 import ProfilePage from './pages/ProfilePage'
-import AboutPage from './pages/AboutPage
-'
+import AboutPage from './pages/AboutPage'
+
 function App() {
   return (
       <Router>
