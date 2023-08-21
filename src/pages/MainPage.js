@@ -1,7 +1,23 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Container, Row, Col, Card, Button } from 'react-bootstrap'
+import { fetchProducts } from '../clientDAL' 
 
 const MainPage = () => {
+    const [products, setProducts] = useState([])
+
+    useEffect(() => {
+        async function loadProducts() {
+            try {
+                const data = await fetchProducts()
+                setProducts(data)
+            } catch (error) {
+                console.error("Error fetching products:", error)
+            }
+        }
+
+        loadProducts()
+    }, [])
+
     return (
         <Container fluid>
             <Row className="my-4">
@@ -15,12 +31,12 @@ const MainPage = () => {
                 </Col>
             </Row>
             <Row className="my-4">
-                {Array.from({ length: 3 }).map((_, idx) => (
-                    <Col md={4} key={idx}>
+                {products.map(product => (
+                    <Col md={4} key={product.productID}>
                         <Card>
-                            <Card.Img variant="top" src="/path/to/product-image.jpg" />
+                            <Card.Img variant="top" src={product.image} />
                             <Card.Body>
-                                <Card.Title>Product {idx + 1}</Card.Title>
+                                <Card.Title>{product.name}</Card.Title>
                                 <Button variant="primary">Add to Cart</Button>
                             </Card.Body>
                         </Card>
