@@ -1,8 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Container, Form, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import { registerUser } from './clientDAL'
 
 function Register() {
+  const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    const [message, setMessage] = useState('')
+    const [error, setError] = useState('')
+
+    const register = async () => {
+        try {
+            const response = await registerUser({ name, email, password })
+            setError('')
+            setMessage(response.message)
+        } catch (error) {
+            setMessage('')
+            setError("Error registering. Please try again.")
+        }
+    }
+
   return (
     <Container className="mt-5">
       <h2 className="text-center mb-4">Register</h2>
