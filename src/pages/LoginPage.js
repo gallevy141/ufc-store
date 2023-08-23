@@ -4,6 +4,29 @@ import { Container, Row, Col, Form, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 function LoginPage() {
+  const [name, setName] = useState('');
+  const [password, setPassword] = useState('');
+
+
+  const [message, setMessage] = useState('');
+  const [error, setError] = useState('');
+
+  const login = async () => {
+      try {
+          const response = await loginUser({ name, password });
+
+          setError('')
+          if (response.token) {
+              setMessage(response.message)
+          } else {
+              setError("Invalid login response. Please try again.")
+          }
+      } catch (error) {
+          setMessage('')
+          setError("Error logging in. Please check your credentials and try again.")
+      }
+  }
+
   return (
     <div>
 
