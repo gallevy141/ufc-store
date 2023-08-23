@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Container, Form, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import { registerUser } from './clientDAL'
+import { registerUser } from '../clientDAL'
 
 function Register() {
   const [name, setName] = useState('')
