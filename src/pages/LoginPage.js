@@ -35,9 +35,9 @@ function LoginPage() {
           <Col md={6}>
             <h2 className="text-center">Login</h2>
             <Form>
-              <Form.Group className="mb-3" controlId="formUsername">
-                <Form.Label>Username:</Form.Label>
-                <Form.Control type="text" placeholder="Enter username" />
+              <Form.Group className="mb-3" controlId="formEmail">
+                <Form.Label>Email:</Form.Label>
+                <Form.Control type="text" placeholder="Enter email" />
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formPassword">
