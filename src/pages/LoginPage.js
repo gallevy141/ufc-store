@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { loginUser } from '../clientDAL'
 
 function LoginPage() {
-  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
 
@@ -37,12 +37,22 @@ function LoginPage() {
             <Form>
               <Form.Group className="mb-3" controlId="formEmail">
                 <Form.Label>Email:</Form.Label>
-                <Form.Control type="text" placeholder="Enter email" />
+                <Form.Control 
+                    type="text" 
+                    placeholder="Enter email" 
+                    value={email} 
+                    onChange={e => setEmail(e.target.value)}
+                />
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formPassword">
                 <Form.Label>Password:</Form.Label>
-                <Form.Control type="password" placeholder="Enter password" />
+                <Form.Control 
+                    type="password" 
+                    placeholder="Enter password" 
+                    value={password} 
+                    onChange={e => setPassword(e.target.value)}
+                />
               </Form.Group>
 
               <div className="d-grid gap-2">
