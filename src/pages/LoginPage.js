@@ -11,20 +11,21 @@ function LoginPage() {
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
 
-  const login = async () => {
-      try {
-          const response = await loginUser({ name, password });
+  const login = async (event) => {
+    event.preventDefault()
+    try {
+        const response = await loginUser({ name, password });
 
-          setError('')
-          if (response.token) {
-              setMessage(response.message)
-          } else {
-              setError("Invalid login response. Please try again.")
-          }
-      } catch (error) {
-          setMessage('')
-          setError("Error logging in. Please check your credentials and try again.")
-      }
+        setError('')
+        if (response.token) {
+            setMessage(response.message)
+        } else {
+            setError("Invalid login response. Please try again.")
+        }
+    } catch (error) {
+        setMessage('')
+        setError("Error logging in. Please check your credentials and try again.")
+    }
   }
 
   return (
