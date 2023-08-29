@@ -8,13 +8,13 @@ const MainPage = () => {
     useEffect(() => {
         async function loadProducts() {
             try {
-                const data = await fetchProducts()
-                setProducts(data)
+                const data = await fetchProducts({ limit: 3 })
+                setProducts(data);
             } catch (error) {
                 console.error("Error fetching products:", error)
             }
         }
-
+    
         loadProducts()
     }, [])
 
