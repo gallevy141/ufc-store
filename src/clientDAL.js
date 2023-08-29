@@ -1,15 +1,15 @@
 import axios from 'axios'
 
-const BASE_URL = 'http://localhost:5000/api';
+const BASE_URL = 'http://localhost:5000/api'
 
-export async function fetchProducts() {
-    try {
-        const response = await axios.get(`${BASE_URL}/products`)
-        return response.data
-    } catch (error) {
-        throw error
+export const fetchProducts = async (params = {}) => {
+    const response = await fetch('/api/products?' + new URLSearchParams(params))
+    if (response.ok) {
+      return await response.json()
+    } else {
+      throw new Error('Failed to fetch products')
     }
-}
+  }
 
 export async function registerUser(userData) {
     try {
