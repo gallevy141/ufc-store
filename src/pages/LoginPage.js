@@ -14,7 +14,7 @@ function LoginPage() {
   const login = async (event) => {
     event.preventDefault()
     try {
-        const response = await loginUser({ name, password });
+        const response = await loginUser({ email, password });
 
         setError('')
         if (response.token) {
