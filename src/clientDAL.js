@@ -14,7 +14,11 @@ export const fetchProducts = async (params = {}) => {
 export async function registerUser(userData) {
     try {
         const response = await axios.post(`${BASE_URL}/users/register`, userData)
-        return response.data
+        if (response.status === 200) {
+            return response.data
+        } else {
+            throw new Error('Unexpected response from the server during registration.')
+        }
     } catch (error) {
         throw error
     }
@@ -23,7 +27,11 @@ export async function registerUser(userData) {
 export async function loginUser(loginData) {
     try {
         const response = await axios.post(`${BASE_URL}/users/login`, loginData)
-        return response.data
+        if (response.status === 200) {
+            return response.data
+        } else {
+            throw new Error('Unexpected response from the server during login.')
+        }
     } catch (error) {
         throw error
     }
