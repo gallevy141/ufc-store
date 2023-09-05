@@ -35,7 +35,10 @@ function LoginPage() {
         <Row className="justify-content-center">
           <Col md={6}>
             <h2 className="text-center">Login</h2>
-            <Form>
+            <Form onSubmit={e => {
+              e.preventDefault()
+              login()
+            }}>
               <Form.Group className="mb-3" controlId="formEmail">
                 <Form.Label>Email:</Form.Label>
                 <Form.Control 
