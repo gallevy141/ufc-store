@@ -9,7 +9,8 @@ const MainPage = () => {
         async function loadProducts() {
             try {
                 const data = await fetchProducts({ limit: 3 })
-                setProducts(data);
+                setProducts(data)
+                console.log(data)
             } catch (error) {
                 console.error("Error fetching products:", error)
             }
