@@ -11,7 +11,6 @@ function LoginPage() {
     const [error, setError] = useState('')
 
     const login = async (event) => {
-        event.preventDefault()
         try {
             const response = await loginUser({ email, password })
 
