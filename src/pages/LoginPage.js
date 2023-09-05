@@ -26,6 +26,33 @@ function LoginPage() {
         }
     }
 
+
+    const handleResetRequest = async (e) => {
+      e.preventDefault()
+      const email = e.target.resetEmail.value
+  
+      try {
+          const response = await fetch("/api/request-password-reset", {
+              method: "POST",
+              body: JSON.stringify({ email }),
+              headers: {
+                  "Content-Type": "application/json"
+              }
+          })
+  
+          const data = await response.json();
+  
+          if (response.ok) {
+              alert("Please check your email for password reset instructions.");
+          } else {
+              alert(data.error || "An error occurred while processing your request.");
+          }
+      } catch (error) {
+          
+          alert("There was an error sending the request. Please try again.");
+      }
+    }
+
     return (
         <div>
             <Container className="mt-5">
@@ -69,6 +96,16 @@ function LoginPage() {
                         <p className="mt-3 text-center">
                             Don't have an account? <Link to="/register">Come Register</Link>
                         </p>
+
+                        <h2 className="text-center">Forgot your password?</h2>
+                        <Form onSubmit={e => handleResetRequest(e)}>
+                            <Form.Group controlId="resetEmail">
+                                <Form.Label>Email</Form.Label>
+                                <Form.Control type="email" placeholder="Enter your email" />
+                            </Form.Group>
+                            <Button type="submit">Request Password Reset</Button>
+                        </Form>
+
                     </Col>
                 </Row>
             </Container>
