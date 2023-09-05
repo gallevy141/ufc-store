@@ -10,7 +10,7 @@ function LoginPage() {
     const [message, setMessage] = useState('')
     const [error, setError] = useState('')
 
-    const login = async (event) => {
+    const login = async () => {
         try {
             const response = await loginUser({ email, password })
 
