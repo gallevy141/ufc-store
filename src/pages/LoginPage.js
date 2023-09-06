@@ -19,7 +19,7 @@ function LoginPage() {
 
           if (response.token) {
               setUser({ name: response.name, email: response.email })
-              console.log("User state after setting:", user)
+              console.log("User state after setting:", { name: response.name, email: response.email })
               localStorage.setItem("user", JSON.stringify({ name: response.name, email: response.email }))
               setMessage(response.message)
           } else {
