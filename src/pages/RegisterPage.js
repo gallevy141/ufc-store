@@ -26,6 +26,7 @@ function Register() {
 
           if (response.success) {
               setUser({ name: name, email: email })
+              console.log("User state after setting:", user)
               localStorage.setItem("user", JSON.stringify({ name: name, email: email }))
           }
           
