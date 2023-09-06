@@ -1,10 +1,11 @@
 import React, { useState, useContext } from 'react'
 import { Container, Form, Button, Alert } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { registerUser } from '../clientDAL'
 import UserContext from '../components/UserContext';
 
 function Register() {
+    const navigate = useNavigate()
     const { setUser } = useContext(UserContext)
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
@@ -28,7 +29,9 @@ function Register() {
               setUser({ name: name, email: email })
               console.log("User state after setting:", { name: name, email: email })
               localStorage.setItem("user", JSON.stringify({ name: name, email: email }))
-          }
+
+              navigate('/')
+            }
           
           setError('')
           setMessage(response.message)
