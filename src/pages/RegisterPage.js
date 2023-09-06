@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Container, Form, Button, Alert } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { registerUser } from '../clientDAL'
-import { UserContext } from '../components/UserContext'
+import UserContext from '../components/UserContext';
 
 function Register() {
     const { setUser } = useContext(UserContext)
