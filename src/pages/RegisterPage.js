@@ -2,8 +2,10 @@ import React, { useState } from 'react'
 import { Container, Form, Button, Alert } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { registerUser } from '../clientDAL'
+import { UserContext } from '../components/UserContext'
 
 function Register() {
+    const { setUser } = useContext(UserContext)
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -15,18 +17,24 @@ function Register() {
     const [error, setError] = useState('')
 
     const register = async () => {
-        try {
-            if (password !== confirmPassword) {
-              setError("Passwords do not match.")
-              return
-            }
-            const response = await registerUser({ name, email, password, address, phoneNumber })
-            setError('')
-            setMessage(response.message)
-        } catch (error) {
-            setMessage('')
-            setError("Error registering. Please try again.")
-        }
+      try {
+          if (password !== confirmPassword) {
+            setError("Passwords do not match.")
+            return
+          }
+          const response = await registerUser({ name, email, password, address, phoneNumber })
+
+          if (response.success) {
+              setUser({ name: name, email: email })
+              localStorage.setItem("user", JSON.stringify({ name: name, email: email }))
+          }
+          
+          setError('')
+          setMessage(response.message)
+      } catch (error) {
+          setMessage('')
+          setError("Error registering. Please try again.")
+      }
     }
 
     return (
