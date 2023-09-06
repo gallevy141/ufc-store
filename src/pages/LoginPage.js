@@ -3,7 +3,6 @@ import { Container, Row, Col, Form, Button, Alert } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { loginUser } from '../clientDAL'
 import UserContext from '../components/UserContext'
-import React, { useContext } from 'react'
 
 function LoginPage() {
     const { setUser } = useContext(UserContext)
