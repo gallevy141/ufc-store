@@ -24,7 +24,7 @@ function LoginPage() {
               localStorage.setItem("user", JSON.stringify({ name: response.name, email: response.email }))
               setMessage(response.message)
           
-              nagivate('/')
+              navigate('/')
 
             } else {
               setError("Invalid login response. Please try again.")
