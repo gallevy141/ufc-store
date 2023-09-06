@@ -16,27 +16,39 @@ import CheckoutPage from './pages/CheckoutPage'
 import ReceiptPage from './pages/ReceiptPage'
 import ProfilePage from './pages/ProfilePage'
 import AboutPage from './pages/AboutPage'
+import UserContext from './components/UserContext'
 
 function App() {
-  return (
-      <Router>
-          <Header />
-          <Routes>
-              <Route path="/" element={<MainPage />} />
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/browse" element={<Browse />} />
-              <Route path="/product/:productId" element={<ProductPage />} />
-              <Route path="/cart" element={<CartPage />} />
-              <Route path="/checkout" element={<CheckoutPage />} />
-              <Route path="/receipt" element={<ReceiptPage />} />
-              <Route path="/profile" element={<ProfilePage />} />
-              <Route path="/about" element={<AboutPage />} />
-              {/*other routes here as needed */}
-          </Routes>
-          <Footer />
-      </Router>
-  )
+    const [user, setUser] = useState(null)
+    
+    useEffect(() => {
+        const loggedInUser = localStorage.getItem("user")
+        if (loggedInUser) {
+            setUser(JSON.parse(loggedInUser))
+        }
+    }, [])
+
+    return (
+        <UserContext.Provider value={{ user, setUser }}>
+            <Router>
+                <Header />
+                <Routes>
+                    <Route path="/" element={<MainPage />} />
+                    <Route path="/login" element={<LoginPage />} />
+                    <Route path="/register" element={<Register />} />
+                    <Route path="/browse" element={<Browse />} />
+                    <Route path="/product/:productId" element={<ProductPage />} />
+                    <Route path="/cart" element={<CartPage />} />
+                    <Route path="/checkout" element={<CheckoutPage />} />
+                    <Route path="/receipt" element={<ReceiptPage />} />
+                    <Route path="/profile" element={<ProfilePage />} />
+                    <Route path="/about" element={<AboutPage />} />
+                    {/*other routes here as needed */}
+                </Routes>
+                <Footer />
+            </Router>
+        </UserContext.Provider>
+    )
 }
 
 export default App
