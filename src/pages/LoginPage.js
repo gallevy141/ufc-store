@@ -1,11 +1,12 @@
 import React, { useState, useContext } from 'react'
 import { Container, Row, Col, Form, Button, Alert } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { loginUser } from '../clientDAL'
 import UserContext from '../components/UserContext'
 
 function LoginPage() {
     const { setUser } = useContext(UserContext)
+    const navigate = useNavigate()
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -22,7 +23,10 @@ function LoginPage() {
               console.log("User state after setting:", { name: response.name, email: response.email })
               localStorage.setItem("user", JSON.stringify({ name: response.name, email: response.email }))
               setMessage(response.message)
-          } else {
+          
+              nagivate('/')
+
+            } else {
               setError("Invalid login response. Please try again.")
           }
       } catch (error) {
