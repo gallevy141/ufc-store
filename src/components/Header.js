@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { Navbar, Nav } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import UserContext from './components/UserContext'
+import UserContext from './UserContext'
 
 const Header = () => {
     const { user, setUser } = useContext(UserContext)
