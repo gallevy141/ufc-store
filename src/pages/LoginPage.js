@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import { Container, Row, Col, Form, Button, Alert } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { loginUser } from '../clientDAL'
+import { UserContext } from '../components/UserContext'
 
 function LoginPage() {
+    const { setUser } = useContext(UserContext)
+
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
@@ -11,19 +14,20 @@ function LoginPage() {
     const [error, setError] = useState('')
 
     const login = async () => {
-        try {
-            const response = await loginUser({ email, password })
+      try {
+          const response = await loginUser({ email, password })
 
-            setError('')
-            if (response.token) {
-                setMessage(response.message)
-            } else {
-                setError("Invalid login response. Please try again.")
-            }
-        } catch (error) {
-            setMessage('')
-            setError("Error logging in. Please check your credentials and try again.")
-        }
+          if (response.token) {
+              setUser({ name: response.name, email: response.email })
+              localStorage.setItem("user", JSON.stringify({ name: response.name, email: response.email }))
+              setMessage(response.message)
+          } else {
+              setError("Invalid login response. Please try again.")
+          }
+      } catch (error) {
+          setMessage('')
+          setError("Error logging in. Please check your credentials and try again.")
+      }
     }
 
 
@@ -48,7 +52,6 @@ function LoginPage() {
               alert(data.error || "An error occurred while processing your request.");
           }
       } catch (error) {
-          
           alert("There was an error sending the request. Please try again.");
       }
     }
