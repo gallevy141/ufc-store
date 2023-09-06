@@ -5,7 +5,8 @@ import UserContext from './UserContext'
 
 const Header = () => {
     const { user, setUser } = useContext(UserContext)
-
+    console.log("User data in header:", user)
+    
     const logout = () => {
         setUser(null);
         localStorage.removeItem("user")
