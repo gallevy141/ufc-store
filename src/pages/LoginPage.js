@@ -99,11 +99,15 @@ function LoginPage() {
 
                         <h2 className="text-center">Forgot your password?</h2>
                         <Form onSubmit={e => handleResetRequest(e)}>
-                            <Form.Group controlId="resetEmail">
+                            <Form.Group className="mb-3" controlId="resetEmail">
                                 <Form.Label>Email</Form.Label>
                                 <Form.Control type="email" placeholder="Enter your email" />
                             </Form.Group>
-                            <Button type="submit">Request Password Reset</Button>
+                            <div className="d-grid gap-2">
+                                <Button variant="primary" type="submit">
+                                    Request Password Reset
+                                </Button>
+                            </div>
                         </Form>
 
                     </Col>
