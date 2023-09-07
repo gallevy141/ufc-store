@@ -24,6 +24,7 @@ function Register() {
             return
           }
           const response = await registerUser({ name, email, password, address, phoneNumber })
+          console.log('Received response from server:', response)
 
           if (response.data.userId) {
               setUser({ name: name, email: email })
