@@ -13,7 +13,9 @@ export const fetchProducts = async (params = {}) => {
 
 export async function registerUser(userData) {
     try {
+        console.log("Sending user data to server:", userData)
         const response = await axios.post(`${BASE_URL}/users/register`, userData)
+        console.log("Server response:", response.data)
         if (response.status === 200) {
             return response.data
         } else {
