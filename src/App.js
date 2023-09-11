@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'font-awesome/css/font-awesome.min.css'
+import axios from 'axios'
 
 //Import components
 import Header from './components/Header'
@@ -18,6 +19,8 @@ import ProfilePage from './pages/ProfilePage'
 import AboutPage from './pages/AboutPage'
 import UserContext from './components/UserContext'
 import ResetPasswordPage from './pages/ResetPasswordPage'
+
+const BASE_URL = 'http://localhost:5000'
 
 function App() {
     const [user, setUser] = useState(null)
