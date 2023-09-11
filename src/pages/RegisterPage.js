@@ -26,7 +26,7 @@ function Register() {
           const response = await registerUser({ name, email, password, address, phoneNumber })
           console.log('Received response from server:', response)
 
-          if (response.data.userId) {
+          if (response.userId) {
               setUser({ name: name, email: email })
               console.log("User state after setting:", { name: name, email: email })
               localStorage.setItem("user", JSON.stringify({ name: name, email: email }))
