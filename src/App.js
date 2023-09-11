@@ -28,7 +28,7 @@ function App() {
     useEffect(() => {
         async function checkUserSession() {
             try {
-                const response = await axios.get(`${BASE_URL}/users/me`);
+                const response = await axios.get(`${BASE_URL}/api/users/me`)
                 if (response.status === 200) {
                     setUser(response.data)
                 }
