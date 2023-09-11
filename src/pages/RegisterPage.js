@@ -26,16 +26,16 @@ function Register() {
           const response = await registerUser({ name, email, password, address, phoneNumber })
           console.log('Received response from server:', response)
 
-          if (response.userId) {
-              setUser({ name: name, email: email })
-              console.log("User state after setting:", { name: name, email: email })
-              localStorage.setItem("user", JSON.stringify({ name: name, email: email }))
+          if (response.token) {
+            setUser({ name: response.name, email: response.email })
+            localStorage.setItem("user", JSON.stringify({ name: response.name, email: response.email }))
+                
+            navigate('/')
 
-              navigate('/')
-            }
-          
-          setError('')
-          setMessage(response.message)
+            setMessage(response.message)
+          } else {
+              setError("Invalid login response. Please try again.")
+          }
       } catch (error) {
           setMessage('')
           setError("Error registering. Please try again.")
