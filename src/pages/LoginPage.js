@@ -14,25 +14,19 @@ function LoginPage() {
     const [message, setMessage] = useState('')
     const [error, setError] = useState('')
 
-    const login = async () => {
-      try {
-          const response = await loginUser({ email, password })
+    const handleLogin = async (e) => {
+        e.preventDefault()
 
-          if (response.token) {
-              setUser({ name: response.name, email: response.email })
-              console.log("User state after setting:", { name: response.name, email: response.email })
-              localStorage.setItem("user", JSON.stringify({ name: response.name, email: response.email }))
-              setMessage(response.message)
-          
-              navigate('/')
-
-            } else {
-              setError("Invalid login response. Please try again.")
-          }
-      } catch (error) {
-          setMessage('')
-          setError("Error logging in. Please check your credentials and try again.")
-      }
+        try {
+            const response = await axios.post(`${BASE_URL}/users/login`, { email, password })
+            if (response.status === 200) {
+                setUser(response.data)
+                localStorage.setItem("user", JSON.stringify(response.data))
+                history.push('/')
+            }
+        } catch (err) {
+            setError("Invalid email or password.")
+        }
     }
 
 
