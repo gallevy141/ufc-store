@@ -23,10 +23,22 @@ function App() {
     const [user, setUser] = useState(null)
     
     useEffect(() => {
-        const loggedInUser = localStorage.getItem("user")
-        if (loggedInUser) {
-            setUser(JSON.parse(loggedInUser))
+        async function checkUserSession() {
+            try {
+                const response = await axios.get(`${BASE_URL}/users/me`);
+                if (response.status === 200) {
+                    setUser(response.data)
+                }
+            } catch (error) {
+                if (error.response && error.response.status === 401) {
+                    console.error("User is not authenticated")
+                } else {
+                    console.error("An error occurred while fetching user data:", error.message)
+                }
+            }
         }
+    
+        checkUserSession()
     }, [])
 
     return (
