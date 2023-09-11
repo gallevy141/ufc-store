@@ -20,21 +20,19 @@ function Register() {
     const register = async () => {
       try {
           if (password !== confirmPassword) {
-            setError("Passwords do not match.")
-            return
+              setError("Passwords do not match.")
+              return
           }
+  
           const response = await registerUser({ name, email, password, address, phoneNumber })
           console.log('Received response from server:', response)
-
-          if (response.token) {
-            setUser({ name: response.name, email: response.email })
-            localStorage.setItem("user", JSON.stringify({ name: response.name, email: response.email }))
-                
-            navigate('/')
-
-            setMessage(response.message)
+  
+          if (response.message === 'User registered successfully.') {
+              setUser({ name: response.name, email: response.email })
+              navigate('/')
+              setMessage(response.message)
           } else {
-              setError("Invalid login response. Please try again.")
+              setError("Registration failed. Please try again.")
           }
       } catch (error) {
           setMessage('')
