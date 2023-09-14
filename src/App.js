@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'font-awesome/css/font-awesome.min.css'
 import axios from 'axios'
-axios.defaults.withCredentials = true
 
 //Import components
 import Header from './components/Header'
@@ -20,6 +19,8 @@ import ProfilePage from './pages/ProfilePage'
 import AboutPage from './pages/AboutPage'
 import UserContext from './components/UserContext'
 import ResetPasswordPage from './pages/ResetPasswordPage'
+
+axios.defaults.withCredentials = true
 
 const BASE_URL = 'http://localhost:5000'
 
