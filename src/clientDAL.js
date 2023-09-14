@@ -77,3 +77,16 @@ export const removeProductFromCart = async (userId, productId) => {
         throw error
     }
 }
+
+export const getLoggedInUser = async () => {
+    try {
+        const response = await axios.get(`${BASE_URL}/users/me`)
+        if (response.status === 200) {
+            return response.data
+        } else {
+            throw new Error('Failed to fetch logged-in user details')
+        }
+    } catch (error) {
+        throw error
+    }
+}
