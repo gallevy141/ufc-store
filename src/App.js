@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'font-awesome/css/font-awesome.min.css'
 import axios from 'axios'
+axios.defaults.withCredentials = true
 
 //Import components
 import Header from './components/Header'
