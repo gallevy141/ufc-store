@@ -1,39 +1,50 @@
 import React, { useState, useEffect } from 'react'
-import { Container, Row, Col, Button, Dropdown, Card } from 'react-bootstrap'
+import { Container, Row, Col, Button, Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import { getLoggedInUser, fetchCartItems } from '../clientDAL'
+import { fetchCartItems } from '../clientDAL'
 
 function CartPage() {
-    const [userId, setUserId] = useState(null)
     const [cartItems, setCartItems] = useState([])
 
     useEffect(() => {
-
-        async function fetchUser() {
+        async function fetchCart() {
             try {
-                const userData = await getLoggedInUser()
-                setUserId(userData.userId)
+                const userResponse = await fetch("http://localhost:3001/api/users/me", {
+                    credentials: "include"
+                })
 
-                const cartData = await fetchCartItems(userData.userId)
-                setCartItems(cartData)
+                const userData = await userResponse.json()
+
+                if (userData && userData.userId) {
+                    const items = await fetchCartItems(userData.userId)
+                    setCartItems(items);
+                }
             } catch (error) {
                 console.error("Error fetching user or cart data:", error)
             }
         }
-        fetchUser()
+        fetchCart()
     }, [])
+
+    const calculateTotal = () => {
+        return cartItems.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2)
+    }
 
     return (
         <Container>
             <h2 className="mb-4">Your Shopping Cart</h2>
             {cartItems.map(item => (
-                <Card key={item.productId} className="mb-3"> 
-                    {/* ... Display cart item details ... */}
+                <Card key={item.productId} className="mb-3">
+                    <Card.Body>
+                        <Card.Title>{item.name}</Card.Title>
+                        <p>Price: ${item.price}</p>
+                        <p>Quantity: {item.quantity}</p>
+                    </Card.Body>
                 </Card>
             ))}
 
             <Row className="align-items-center">
-                <Col>Total: $xx.xx</Col>  {/* Update this with actual total */}
+                <Col>Total: ${calculateTotal()}</Col> 
                 <Col className="text-right">
                     <Button as={Link} to="/checkout" variant="primary">Checkout</Button>
                 </Col>
