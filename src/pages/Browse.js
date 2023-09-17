@@ -1,8 +1,15 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Container, Row, Col, Image, Dropdown, DropdownButton, Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import { fetchProducts } from './clientDAL'
 
 const Browse = () => {
+    const [products, setProducts] = useState([])
+
+    useEffect(() => {
+        fetchProducts().then(data => setProducts(data)).catch(err => console.error(err))
+    }, [])
+
     return (
         <Container fluid className="py-4">
             <Row className="mb-4">
@@ -24,19 +31,19 @@ const Browse = () => {
 
             {/* Product grid */}
             <Row>
-                {/* Example product. map over an array of products to generate these. */}
-                <Col xs={12} md={4} lg={3} className="mb-4">
-                    {/*<Link to={`/product/${productIdHere}`} className="text-decoration-none text-dark">*/}
-                        <Card>
-                            <Card.Img variant="top" src="path_to_product1_image.jpg" />
-                            <Card.Body>
-                                <Card.Title>Product Name 1</Card.Title>
-                                <Card.Text>Product description or price.</Card.Text>
-                            </Card.Body>
-                        </Card>
-                    {/*</Link>*/}
-                </Col>
-                {/* Repeat above Col for more products */}
+                {products.map(product => (
+                    <Col key={product.productID} xs={12} md={4} lg={3} className="mb-4">
+                        <Link to={`/product/${product.productID}`} className="text-decoration-none text-dark">
+                            <Card>
+                                <Card.Img variant="top" src={product.image} alt={product.name} />
+                                <Card.Body>
+                                    <Card.Title>{product.name}</Card.Title>
+                                    <Card.Text>{product.description || product.price}</Card.Text>
+                                </Card.Body>
+                            </Card>
+                        </Link>
+                    </Col>
+                ))}
             </Row>
         </Container>
     )
