@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Container, Row, Col, Image, Dropdown, DropdownButton, Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import { fetchProducts } from './clientDAL'
+import { fetchProducts } from '../clientDAL'
 
 const Browse = () => {
     const [products, setProducts] = useState([])
