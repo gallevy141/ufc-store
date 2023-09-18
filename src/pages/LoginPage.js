@@ -20,7 +20,7 @@ function LoginPage() {
 
           if (response.status === 200) {
             setUser({ userId: response.data.userId, name: response.data.name })
-              console.log("User state after setting:", { name: response.name, email: response.email })
+              console.log("User state after setting:", { name: response.data.name, email: email })
               localStorage.setItem("user", JSON.stringify({ userId: response.data.userId, name: response.data.name }))
               
               navigate('/')
