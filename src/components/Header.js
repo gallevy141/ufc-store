@@ -8,7 +8,8 @@ const Header = () => {
     console.log("User data in header:", user)
     
     const logout = () => {
-        setUser(null);
+        setUser(null)
+        console.log('User after logout:', user)
         localStorage.removeItem("user")
     }
 
