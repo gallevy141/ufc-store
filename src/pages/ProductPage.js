@@ -12,7 +12,7 @@ function ProductPage() {
         async function fetchProduct() {
             try {
                 const productData = await fetchProducts({ productId })
-                setProduct(productData[0])
+                setProduct(productData)
                 
                 const userData = await getLoggedInUser()
                 setUser(userData)
