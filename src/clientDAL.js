@@ -40,7 +40,7 @@ export async function registerUser(userData) {
 export async function loginUser(loginData) {
     const response = await axios.post(`${BASE_URL}/users/login`, loginData)
     if (response.status === 200) {
-        return response.data
+        return response
     } else {
         const errorData = await response.json();
         throw new Error(errorData.message || 'Unexpected response from the server during login.');
