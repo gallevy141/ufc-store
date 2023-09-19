@@ -31,7 +31,7 @@ function LoginPage() {
           }
       } catch (error) {
           setMessage('')
-          setError("Error logging in. Please check your credentials and try again.")
+          setError(error.message)
       }
     }
 
