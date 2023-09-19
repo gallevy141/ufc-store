@@ -27,15 +27,12 @@ export async function registerUser(userData) {
 }
 
 export async function loginUser(loginData) {
-    try {
-        const response = await axios.post(`${BASE_URL}/users/login`, loginData)
-        if (response.status === 200) {
-            return response.data
-        } else {
-            throw new Error('Unexpected response from the server during login.')
-        }
-    } catch (error) {
-        throw error
+    const response = await axios.post(`${BASE_URL}/users/login`, loginData)
+    if (response.status === 200) {
+        return response.data
+    } else {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Unexpected response from the server during login.');
     }
 }
 
