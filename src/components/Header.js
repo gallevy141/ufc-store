@@ -10,7 +10,7 @@ const Header = () => {
     
     const logout = async () => {
         try {
-            const response = await axios.post('/logout')
+            const response = await axios.post('${BASE_URL}/users/logout')
     
             if (response.status === 200) {
                 console.log(response.data.message)
