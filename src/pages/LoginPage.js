@@ -15,24 +15,18 @@ function LoginPage() {
     const [error, setError] = useState('')
 
     const login = async () => {
-      try {
-          const response = await loginUser({ email, password })
-
-          if (response.status === 200) {
+        try {
+            const response = await loginUser({ email, password })
             setUser({ userId: response.data.userId, name: response.data.name })
-              console.log("User state after setting:", { name: response.data.name, email: email })
-              localStorage.setItem("user", JSON.stringify({ userId: response.data.userId, name: response.data.name }))
+            console.log("User state after setting:", { name: response.data.name, email: email })
+            localStorage.setItem("user", JSON.stringify({ userId: response.data.userId, name: response.data.name }))
               
-              navigate('/')
-              setMessage(response.message)
-
-            } else {
-              setError("Invalid login response. Please try again.")
-          }
-      } catch (error) {
-          setMessage('')
-          setError(error.message)
-      }
+            navigate('/')
+            setMessage(response.message)
+        } catch (error) {
+            setMessage('')
+            setError(error.message)
+        }
     }
 
 
