@@ -8,7 +8,10 @@ const Browse = () => {
     const [searchTerm, setSearchTerm] = useState('')
 
     useEffect(() => {
-        fetchProducts().then(data => setProducts(data)).catch(err => console.error(err))
+        fetchProducts().then(data => {
+            console.log("Products fetched:", data)
+            setProducts(data)
+        }).catch(err => console.error(err))
     }, [])
 
     const filteredProducts = products.filter(product => 
