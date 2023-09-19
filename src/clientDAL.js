@@ -3,13 +3,17 @@ import axios from 'axios'
 const BASE_URL = 'http://localhost:5000/api'
 
 export const fetchProducts = async (params = {}) => {
-    const response = await fetch('/api/products?' + new URLSearchParams(params))
-    if (response.ok) {
-      return await response.json()
-    } else {
-      throw new Error('Failed to fetch products')
+    let url = '/api/products'
+    if (params.productId) {
+        url += `/${params.productId}`
     }
-  }
+    const response = await fetch(url)
+    if (response.ok) {
+        return await response.json()
+    } else {
+        throw new Error('Failed to fetch products')
+    }
+}
 
 export async function registerUser(userData) {
     try {
