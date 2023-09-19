@@ -16,7 +16,7 @@ const Header = () => {
     return (
         <Navbar bg="dark" variant="dark" expand="lg">
             <Link to="/" className="navbar-brand">
-                <img src="/images/ufc-logo.jpg" alt="UFC Logo" style={{ height: '40px', width: 'auto' }} />
+                <img src="/public/images/ufc-logo.jpg" alt="UFC Logo" style={{ height: '40px', width: 'auto' }} />
             </Link>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
