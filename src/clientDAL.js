@@ -6,6 +6,8 @@ export const fetchProducts = async (params = {}) => {
     let url = '/api/products'
     if (params.productId) {
         url += `/${params.productId}`
+    } else if (params.limit) {
+        url += `?limit=${params.limit}`
     }
     const response = await fetch(url)
     if (response.ok) {
