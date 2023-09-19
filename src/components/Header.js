@@ -2,15 +2,26 @@ import React, { useContext } from 'react'
 import { Navbar, Nav } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import UserContext from './UserContext'
+import axios from 'axios'
 
 const Header = () => {
     const { user, setUser } = useContext(UserContext)
     console.log("User data in header:", user)
     
-    const logout = () => {
-        setUser(null)
-        console.log('User after logout:', user)
-        localStorage.removeItem("user")
+    const logout = async () => {
+        try {
+            const response = await axios.post('/logout')
+    
+            if (response.status === 200) {
+                console.log(response.data.message)
+                setUser(null)
+                localStorage.removeItem("user")
+            } else {
+                console.error('Failed to log out:', response.data.error || 'Unknown error')
+            }
+        } catch (error) {
+            console.error('Error during logout:', error)
+        }
     }
 
     return (
