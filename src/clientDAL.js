@@ -98,3 +98,16 @@ export const getLoggedInUser = async () => {
         throw error
     }
 }
+
+export const updateProductQuantityInCart = async (userId, productId, quantity) => {
+    try {
+        const response = await axios.put(`${BASE_URL}/cart/${userId}/update/${productId}`, { quantity })
+        if (response.status === 200) {
+            return response.data
+        } else {
+            throw new Error('Failed to update product quantity in cart')
+        }
+    } catch (error) {
+        throw error
+    }
+}
