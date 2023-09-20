@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Container, Row, Col, Card } from 'react-bootstrap'
-import UserContext from './UserContext'
+import UserContext from '../components/UserContext'
 import axios from 'axios'
 
 function OrderHistoryPage() {
