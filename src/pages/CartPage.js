@@ -5,6 +5,7 @@ import { fetchCartItems, getLoggedInUser, removeProductFromCart, updateProductQu
 
 function CartPage() {
     const [cartItems, setCartItems] = useState([])
+    const [total, setTotal] = useState([])
 
     useEffect(() => {
         async function fetchCart() {
@@ -14,6 +15,7 @@ function CartPage() {
                 if (userData && userData.userId) {
                     const items = await fetchCartItems(userData.userId)
                     setCartItems(items)
+                    calculateTotal()
                 }
             } catch (error) {
                 console.error("Error fetching user or cart data:", error)
@@ -30,6 +32,7 @@ function CartPage() {
                 await updateProductQuantityInCart(userData.userId, productId, quantity)
                 const updatedItems = await fetchCartItems(userData.userId)
                 setCartItems(updatedItems)
+                calculateTotal()
             }
         } catch (error) {
             console.error("Error updating cart quantity:", error)
@@ -51,12 +54,13 @@ function CartPage() {
 
     const calculateTotal = () => {
         console.log("cartItems:", cartItems)
-        return cartItems.reduce((total, item) => {
-            if (typeof item.price === 'number' && typeof item.quantity === 'number') {
-                return total + (item.price * item.quantity)
-            }
-            return total
+        const total = cartItems.reduce((total, item) => {
+            const price = Number(item.price)
+            if(isNaN(price)) return total
+            return total + (item.price * item.quantity)            
         }, 0).toFixed(2)
+
+        setTotal(total)
     }
 
     return (
@@ -86,7 +90,7 @@ function CartPage() {
             ))}
 
             <Row className="align-items-center">
-                <Col>Total: ${calculateTotal()}</Col> 
+                <Col>Total: ${total}</Col> 
                 <Col className="text-right">
                     <Button as={Link} to="/checkout" variant="primary">Checkout</Button>
                 </Col>
