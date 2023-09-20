@@ -24,7 +24,7 @@ const MainPage = () => {
         <Container fluid style={{ fontFamily: 'Oswald, sans-serif' }}>
             <Row className="my-5">
                 <Col className="text-center">
-                    <h1 style={{ color: 'white' }}>WELCOME TO THE UFC</h1>
+                    <h1 style={{ color: 'black' }}>WELCOME TO THE UFC</h1>
                 </Col>
             </Row>
             <Row className="my-4">
@@ -39,7 +39,7 @@ const MainPage = () => {
                             <Card>
                                 <Card.Img variant="top" src={product.image} />
                                 <Card.Body>
-                                    <Card.Title style={{ color: 'white' }}>{product.name}</Card.Title>
+                                    <Card.Title style={{ color: 'black' }}>{product.name}</Card.Title>
                                     <Button variant="primary">Add to Cart</Button>
                                 </Card.Body>
                             </Card>
