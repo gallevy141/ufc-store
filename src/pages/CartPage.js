@@ -9,7 +9,7 @@ function CartPage() {
     useEffect(() => {
         async function fetchCart() {
             try {
-                const userResponse = await fetch("http://localhost:3001/api/users/me", {
+                const userResponse = await fetch("http://localhost:5000/api/users/me", {
                     credentials: "include"
                 })
 
