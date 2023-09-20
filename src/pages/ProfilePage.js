@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Container, Row, Col, Card, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import UserContext from './UserContext'
+import UserContext from '../components/UserContext'
 
 function ProfilePage() {
     const { user } = useContext(UserContext)
