@@ -50,7 +50,12 @@ function CartPage() {
     }
 
     const calculateTotal = () => {
-        return cartItems.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2)
+        return cartItems.reduce((total, item) => {
+            if (typeof item.price === 'number' && typeof item.quantity === 'number') {
+                return total + (item.price * item.quantity)
+            }
+            return total
+        }, 0).toFixed(2)
     }
 
     return (
