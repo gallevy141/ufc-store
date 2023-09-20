@@ -21,10 +21,10 @@ const MainPage = () => {
     }, [])
 
     return (
-        <Container fluid>
-            <Row className="my-4">
+        <Container fluid style={{ fontFamily: 'Oswald, sans-serif' }}>
+            <Row className="my-5">
                 <Col className="text-center">
-                    <h1>WELCOME TO THE UFC</h1>
+                    <h1 style={{ color: 'white' }}>WELCOME TO THE UFC</h1>
                 </Col>
             </Row>
             <Row className="my-4">
@@ -32,14 +32,14 @@ const MainPage = () => {
                     <img src="/path/to/ufc-fighter.jpg" alt="UFC Fighter" className="img-fluid"/>
                 </Col>
             </Row>
-            <Row className="my-4">
+            <Row className="my-5">
                 {products.map(product => (
                     <Col md={4} key={product.productID}>
                         <Link to={`/product/${product.productID}`} className="text-decoration-none text-dark">
                             <Card>
                                 <Card.Img variant="top" src={product.image} />
                                 <Card.Body>
-                                    <Card.Title>{product.name}</Card.Title>
+                                    <Card.Title style={{ color: 'white' }}>{product.name}</Card.Title>
                                     <Button variant="primary">Add to Cart</Button>
                                 </Card.Body>
                             </Card>
