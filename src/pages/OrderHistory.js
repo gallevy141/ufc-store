@@ -1,16 +1,16 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { Container, Row, Col, Card } from 'react-bootstrap';
-import UserContext from './UserContext';
-import axios from 'axios';
+import React, { useContext, useEffect, useState } from 'react'
+import { Container, Row, Col, Card } from 'react-bootstrap'
+import UserContext from './UserContext'
+import axios from 'axios'
 
 function OrderHistoryPage() {
-    const { user } = useContext(UserContext);
-    const [orders, setOrders] = useState([]);
+    const { user } = useContext(UserContext)
+    const [orders, setOrders] = useState([])
 
     useEffect(() => {
         const fetchOrderHistory = async () => {
             try {
-                const BASE_URL = 'http://localhost:5000';
+                const BASE_URL = 'http://localhost:5000'
                 const response = await axios.get(`${BASE_URL}/orders/user/${user.id}`)
 
                 if (response.status === 200) {
@@ -19,7 +19,7 @@ function OrderHistoryPage() {
                     console.error('Failed to fetch order history:', response.data.error || 'Unknown error')
                 }
             } catch (error) {
-                console.error('Error fetching order history:', error);
+                console.error('Error fetching order history:', error)
             }
         }
 
