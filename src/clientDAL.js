@@ -111,3 +111,16 @@ export const updateProductQuantityInCart = async (userId, productId, quantity) =
         throw error
     }
 }
+
+export const fetchRecentOrder = async () => {
+    try {
+        const response = await axios.get(`${BASE_URL}/orders/recent`)
+        if (response.status === 200) {
+            return response.data
+        } else {
+            throw new Error('Failed to fetch recent order')
+        }
+    } catch (error) {
+        throw error
+    }
+}
