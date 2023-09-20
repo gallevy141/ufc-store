@@ -19,7 +19,7 @@ import ProfilePage from './pages/ProfilePage'
 import AboutPage from './pages/AboutPage'
 import UserContext from './components/UserContext'
 import ResetPasswordPage from './pages/ResetPasswordPage'
-import OrderHistoryPage from './pages/OrderHistoryPage'
+import OrderHistoryPage from './pages/OrderHistory'
 
 axios.defaults.withCredentials = true
 
@@ -63,7 +63,7 @@ function App() {
                     <Route path="/profile" element={<ProfilePage />} />
                     <Route path="/about" element={<AboutPage />} />
                     <Route path="/reset-password" element={<ResetPasswordPage />} />
-                    <Route path="/order-history" element={<OrderHistoryPage />} />
+                    <Route path="/order-history" element={<OrderHistory />} />
                     {/*other routes here as needed */}
                 </Routes>
                 <Footer />
