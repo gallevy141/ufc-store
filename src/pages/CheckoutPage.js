@@ -39,8 +39,9 @@ function CheckoutPage() {
 
     const handleAddAddress = async () => {
         try {
-            const userData = await getLoggedInUser();
-            if (userData && userData.userId) {
+            const userData = await getLoggedInUser()
+            if (userData && userData.userId) 
+                const BASE_URL = 'http://localhost:5000'
                 const response = await axios.post(`${BASE_URL}/users/${userData.userId}/address`, { address: newAddress })
                 if (response.data.success) {
                     setAddresses(prevAddresses => [...prevAddresses, newAddress])
