@@ -62,7 +62,7 @@ function CartPage() {
         <Container>
             <h2 className="mb-4">Your Shopping Cart</h2>
             {cartItems.map(item => (
-                <Card key={item.productId} className="mb-3">
+                <Card key={item.productID} className="mb-3">
                     <Card.Body>
                         <Card.Img variant="top" src={item.image} />
                         <Card.Title>{item.name}</Card.Title>
@@ -71,13 +71,13 @@ function CartPage() {
                         <Form.Control
                             as="select"
                             value={item.quantity}
-                            onChange={e => handleQuantityChange(item.productId, +e.target.value)}
+                            onChange={e => handleQuantityChange(item.productID, +e.target.value)}
                         >
                             {[...Array(10)].map((_, idx) => (
                                 <option key={idx + 1} value={idx + 1}>{idx + 1}</option>
                             ))}
                         </Form.Control>
-                        <Button variant="danger" className="mt-2" onClick={() => handleRemoveFromCart(item.productId)}>
+                        <Button variant="danger" className="mt-2" onClick={() => handleRemoveFromCart(item.productID)}>
                             Remove
                         </Button>
                     </Card.Body>
