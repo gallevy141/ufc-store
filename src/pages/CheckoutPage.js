@@ -41,7 +41,7 @@ function CheckoutPage() {
         try {
             const userData = await getLoggedInUser();
             if (userData && userData.userId) {
-                const response = await axios.post(`/users/${userData.userId}/address`, { address: newAddress })
+                const response = await axios.post(`${BASE_URL}/users/${userData.userId}/address`, { address: newAddress })
                 if (response.data.success) {
                     setAddresses(prevAddresses => [...prevAddresses, newAddress])
                     setSelectedAddress(newAddress)
