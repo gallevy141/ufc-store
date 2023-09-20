@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container, Row, Col, Card } from 'react-bootstrap'
 import { fetchRecentOrder } from './clientDAL'
 
@@ -9,7 +9,7 @@ function ReceiptPage() {
         async function fetchOrder() {
             try {
                 const data = await fetchRecentOrder()
-                setOrderData(data)
+                setOrderData(data);
             } catch (error) {
                 console.error("Error fetching the recent order:", error)
             }
@@ -17,6 +17,10 @@ function ReceiptPage() {
         
         fetchOrder()
     }, [])
+
+    if (!orderData) {
+        return <p>Loading...</p>
+    }
 
     return (
         <Container>
@@ -31,11 +35,17 @@ function ReceiptPage() {
                     <Card>
                         <Card.Body>
                             <Card.Title>You have ordered...</Card.Title>
-                            {/* Map through an array of ordered products here. temp placeholders. */}
-                            <Card.Text>Product 1</Card.Text>
-                            <Card.Text>Product 2</Card.Text>
-                            <Card.Text>Product 3</Card.Text>
-                            <Card.Text>Product 4</Card.Text>
+                            {orderData.products && orderData.products.map(product => (
+                                <div key={product.productId}>
+                                    <Card.Text>{product.name} - Quantity: {product.quantity} - Price: ${product.price}</Card.Text>
+                                </div>
+                            ))}
+                            
+                            <hr />
+                            <Card.Text><strong>Total Price:</strong> ${orderData.totalPrice}</Card.Text>
+                            <Card.Text><strong>Shipping Address:</strong> {orderData.deliveryAddress}</Card.Text>
+                            <Card.Text><strong>Order Number:</strong> {orderData.orderID}</Card.Text>
+                            <Card.Text><strong>Order Date:</strong> {new Date(orderData.date).toLocaleDateString()}</Card.Text>
                         </Card.Body>
                     </Card>
                 </Col>
