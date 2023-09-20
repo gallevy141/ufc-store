@@ -50,6 +50,7 @@ function CartPage() {
     }
 
     const calculateTotal = () => {
+        console.log("cartItems:", cartItems)
         return cartItems.reduce((total, item) => {
             if (typeof item.price === 'number' && typeof item.quantity === 'number') {
                 return total + (item.price * item.quantity)
