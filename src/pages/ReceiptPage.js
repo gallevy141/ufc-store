@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Container, Row, Col, Card } from 'react-bootstrap'
-import { fetchRecentOrder } from './clientDAL'
+import { fetchRecentOrder } from '../clientDAL'
 
 function ReceiptPage() {
     const [orderData, setOrderData] = useState(null)
