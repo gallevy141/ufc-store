@@ -40,11 +40,12 @@ const Header = () => {
                     <Nav.Link href="#" className="text-danger">Contact</Nav.Link>
                     {user ? (
                         <>
+                            <Link to="/profile" className="nav-link text-warning">Profile</Link>
                             <span className="nav-link text-warning">Welcome, {user.name}!</span>
                             <Nav.Link onClick={logout} className="text-primary">Logout</Nav.Link>
                         </>
                     ) : (
-                        <Link to="/login" className="nav-link text-white">Login/Profile</Link>
+                        <Link to="/login" className="nav-link text-white">Login</Link>
                     )}
                     <Link to="/cart" className="nav-link text-danger">Cart</Link>
                 </Nav>
