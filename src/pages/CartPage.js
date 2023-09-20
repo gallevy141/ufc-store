@@ -10,7 +10,7 @@ function CartPage() {
         async function fetchCart() {
             try {
                 const userData = await getLoggedInUser()
-                
+
                 if (userData && userData.userId) {
                     const items = await fetchCartItems(userData.userId)
                     setCartItems(items)

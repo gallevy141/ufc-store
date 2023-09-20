@@ -1,22 +1,53 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Navbar, Nav } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import UserContext from './UserContext'
+import axios from 'axios'
 
 const Header = () => {
+    const { user, setUser } = useContext(UserContext)
+    console.log("User data in header:", user)
+    
+    const logout = async () => {
+        try {
+            const BASE_URL = 'http://localhost:5000'
+            const response = await axios.post(`${BASE_URL}/api/users/logout`)
+    
+            if (response.status === 200) {
+                console.log(response.data.message)
+                setUser(null)
+                localStorage.removeItem("user")
+            } else {
+                console.error('Failed to log out:', response.data.error || 'Unknown error')
+            }
+        } catch (error) {
+            console.error('Error during logout:', error)
+        }
+    }
+
     return (
-        <Navbar bg="dark" variant="dark" expand="lg">
-            <Link to="/" className="navbar-brand">UFC</Link>
+        <Navbar bg="black" variant="dark" expand="lg" style={{ fontFamily: 'Oswald, sans-serif' }}>
+            <Link to="/" className="navbar-brand">
+                <img src="/public/images/ufc-logo.jpg" alt="UFC Logo" style={{ height: '40px', width: 'auto' }} />
+            </Link>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
-                    <Link to="/browse" className="nav-link">Browse</Link>
-                    <Nav.Link href="#">Blog</Nav.Link>
-                    <Nav.Link href="#">Upcoming</Nav.Link>
-                    <Nav.Link href="#">Rankings</Nav.Link>
-                    <Nav.Link href="#">About</Nav.Link>
-                    <Nav.Link href="#">Contact</Nav.Link>
-                    <Link to="/login" className="nav-link">Login/Profile</Link>
-                    <Nav.Link href="#">Cart</Nav.Link>
+                    <Link to="/browse" className="nav-link text-white">Browse</Link>
+                    <Nav.Link href="#" className="text-danger">Blog</Nav.Link>
+                    <Nav.Link href="#" className="text-white">Upcoming</Nav.Link>
+                    <Nav.Link href="#" className="text-danger">Rankings</Nav.Link>
+                    <Link to="/about" className="nav-link text-white">About</Link>
+                    <Nav.Link href="#" className="text-danger">Contact</Nav.Link>
+                    {user ? (
+                        <>
+                            <span className="nav-link text-warning">Welcome, {user.name}!</span>
+                            <Nav.Link onClick={logout} className="text-primary">Logout</Nav.Link>
+                        </>
+                    ) : (
+                        <Link to="/login" className="nav-link text-white">Login/Profile</Link>
+                    )}
+                    <Link to="/cart" className="nav-link text-danger">Cart</Link>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>
