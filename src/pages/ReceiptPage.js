@@ -1,7 +1,23 @@
 import React from 'react'
 import { Container, Row, Col, Card } from 'react-bootstrap'
+import { fetchRecentOrder } from './clientDAL'
 
 function ReceiptPage() {
+    const [orderData, setOrderData] = useState(null)
+    
+    useEffect(() => {
+        async function fetchOrder() {
+            try {
+                const data = await fetchRecentOrder()
+                setOrderData(data)
+            } catch (error) {
+                console.error("Error fetching the recent order:", error)
+            }
+        }
+        
+        fetchOrder()
+    }, [])
+
     return (
         <Container>
             <Row className="my-4">
