@@ -1,13 +1,24 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Container, Row, Col, Card, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import UserContext from '../components/UserContext'
 
 function ProfilePage() {
+    const { user } = useContext(UserContext)
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if (!user) {
+            navigate('/login')
+        }
+    }, [user, navigate])
+
     return (
         <Container>
             <Row className="my-4">
                 <Col>
-                    <h2>Welcome, User's Name</h2>
+                <h2>Welcome, {user ? user.name : 'User'}</h2>
                 </Col>
             </Row>
 
