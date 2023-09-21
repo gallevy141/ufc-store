@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Row, Col, Image, Card } from 'react-bootstrap'
+import { Container, Row, Col, Card } from 'react-bootstrap'
 
 function AboutUs() {
     return (
@@ -7,19 +7,19 @@ function AboutUs() {
 
             <Card className="my-4 bg-light text-center py-4 shadow-sm">
                 <Card.Body>
-                    <Card.Title>"We Are The Most Entertaining Sport On The Planet"</Card.Title>
-                    <Card.Footer className="blockquote-footer">Dana White</Card.Footer>
+                    <h2>"We Are The Most Entertaining Sport On The Planet"</h2>
+                    <Card.Footer className="text-muted">- Dana White</Card.Footer>
                 </Card.Body>
             </Card>
 
             <Row className="my-4">
                 <Col md={6}>
-                    <Image src="/images/conor-belts.jpg" alt="Conor McGregor with Belts" rounded fluid />
+                    <img src="/images/conor-belts.jpg" alt="Conor McGregor with Belts" className="img-fluid rounded" />
                 </Col>
                 <Col md={6}>
                     <h3>Welcome to the Ultimate Fighting Championship (UFC)</h3>
                     <p>
-                        The premier global organization for mixed martial arts (MMA) competition. Founded in [year], the UFC has 
+                        The premier global organization for mixed martial arts (MMA) competition. Founded in 1993, the UFC has 
                         revolutionized the world of combat sports, showcasing the best fighters from around the globe. With a rich 
                         history and a commitment to excellence, the UFC brings together the most talented athletes in thrilling 
                         matchups across various weight classes and divisions. 
