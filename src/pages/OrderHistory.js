@@ -11,6 +11,11 @@ function OrderHistoryPage() {
         const fetchOrderHistory = async () => {
             try {
                 const BASE_URL = 'http://localhost:5000'
+                if (!user || !user.id) {
+                    console.error('User or User ID is undefined')
+                    return;
+                }
+
                 const response = await axios.get(`${BASE_URL}/orders/user/${user.id}`)
 
                 if (response.status === 200) {
