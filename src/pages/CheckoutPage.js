@@ -54,6 +54,23 @@ function CheckoutPage() {
         setShowAddAddressModal(false)
     }
 
+    const handleConfirmOrder = async () => {
+        try {
+            const userData = await getLoggedInUser()
+            if (userData && userData.userId) {
+                const response = await axios.post(`${BASE_URL}/orders`, { userId: userData.userId, cartItems: cartItems })
+    
+                if (response.data.success) {
+                    window.location.href = "/receipt"
+                } else {
+                    console.error("Error creating order:", response.data.message)
+                }
+            }
+        } catch (error) {
+            console.error("Error creating order:", error)
+        }
+    }
+
     return (
         <Container>
             <h2 className="mb-4">Checkout</h2>
@@ -88,7 +105,7 @@ function CheckoutPage() {
                 </Col>
                 <Col md={4} className="text-right">
                     Total Price: ${total}
-                    <Button as={Link} to="/receipt" variant="primary" className="ml-2">Confirm Order</Button>
+                    <Button variant="primary" className="ml-2" onClick={handleConfirmOrder}>Confirm Order</Button>
                 </Col>
             </Row>
 
