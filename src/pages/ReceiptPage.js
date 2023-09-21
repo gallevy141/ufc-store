@@ -43,7 +43,10 @@ function ReceiptPage() {
                             
                             <hr />
                             <Card.Text><strong>Total Price:</strong> ${orderData.totalPrice}</Card.Text>
-                            <Card.Text><strong>Shipping Address:</strong> {orderData.deliveryAddress}</Card.Text>
+                            <Card.Text>
+                                <strong>Shipping Address:</strong> 
+                                {orderData.deliveryAddress ? orderData.deliveryAddress : 'Not provided'}
+                            </Card.Text>
                             <Card.Text><strong>Order Number:</strong> {orderData.orderID}</Card.Text>
                             <Card.Text><strong>Order Date:</strong> {new Date(orderData.date).toLocaleDateString()}</Card.Text>
                         </Card.Body>
