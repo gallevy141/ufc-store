@@ -124,3 +124,16 @@ export const fetchRecentOrder = async () => {
         throw error
     }
 }
+
+export const clearUserCart = async (userId) => {
+    try {
+        const response = await axios.delete(`${BASE_URL}/cart/${userId}/clear`)
+        if (response.status === 200) {
+            return response.data
+        } else {
+            throw new Error('Failed to clear the cart.')
+        }
+    } catch (error) {
+        throw error
+    }
+}
