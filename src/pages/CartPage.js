@@ -15,18 +15,7 @@ function CartPage() {
                 if (userData && userData.userId) {
                     const items = await fetchCartItems(userData.userId)
                     setCartItems(items)
-<<<<<<< HEAD
                     calculateTotal(items) 
-=======
-
-                    const totalAmount = items.reduce((total, item) => {
-                        const price = Number(item.price)
-                        if(isNaN(price)) return total
-                        return total + (item.price * item.quantity)            
-                    }, 0).toFixed(2)
-    
-                    setTotal(totalAmount)
->>>>>>> bc87e1e9a84cc139610177972ae970114d407555
                 }
             } catch (error) {
                 console.error("Error fetching user or cart data:", error)
