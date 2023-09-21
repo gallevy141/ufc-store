@@ -61,7 +61,7 @@ const Browse = () => {
                 {filteredProducts.map(product => (
                     <Col key={product.productID} xs={12} md={4} lg={3} className="mb-4">
                         <Link to={`/product/${product.productID}`} className="text-decoration-none text-dark">
-                            <Card className="h-100" border="light" hover>
+                            <Card className="h-100" border="light">
                                 <Card.Img variant="top" src={product.image} alt={product.name} />
                                 <Card.Body>
                                     <Card.Title>{product.name}</Card.Title>
