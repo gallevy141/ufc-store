@@ -64,33 +64,43 @@ function CartPage() {
     }
 
     return (
-        <Container>
-            <h2 className="mb-4">Your Shopping Cart</h2>
+        <Container style={{ fontFamily: 'Oswald, sans-serif' }}>
+            <h2 className="mb-4 text-center">Your Shopping Cart</h2>
             {cartItems.map(item => (
-                <Card key={item.productID} className="mb-3">
+                <Card key={item.productID} className="mb-3 shadow-sm">
                     <Card.Body>
-                        <Card.Img variant="top" src={item.image} />
-                        <Card.Title>{item.name}</Card.Title>
-                        <Card.Text>{item.description}</Card.Text>
-                        <p>Price: ${item.price}</p>
-                        <Form.Control
-                            as="select"
-                            value={item.quantity}
-                            onChange={e => handleQuantityChange(item.productID, +e.target.value)}
-                        >
-                            {[...Array(10)].map((_, idx) => (
-                                <option key={idx + 1} value={idx + 1}>{idx + 1}</option>
-                            ))}
-                        </Form.Control>
-                        <Button variant="danger" className="mt-2" onClick={() => handleRemoveFromCart(item.productID)}>
-                            Remove
-                        </Button>
+                        <Row>
+                            <Col xs={2}>
+                                <Card.Img variant="top" src={item.image} className="img-fluid" style={{maxHeight: '80px'}} />
+                            </Col>
+                            <Col xs={3}>
+                                <Card.Title>{item.name}</Card.Title>
+                                <p className="mb-0">Price: ${item.price}</p>
+                            </Col>
+                            <Col xs={3}>
+                                <Form.Control
+                                    as="select"
+                                    value={item.quantity}
+                                    onChange={e => handleQuantityChange(item.productID, +e.target.value)}
+                                    style={{ width: '70px', display: 'inline-block' }}
+                                >
+                                    {[...Array(10)].map((_, idx) => (
+                                        <option key={idx + 1} value={idx + 1}>{idx + 1}</option>
+                                    ))}
+                                </Form.Control>
+                            </Col>
+                            <Col xs={4} className="text-right">
+                                <Button variant="danger" onClick={() => handleRemoveFromCart(item.productID)}>
+                                    Delete
+                                </Button>
+                            </Col>
+                        </Row>
                     </Card.Body>
                 </Card>
             ))}
 
-            <Row className="align-items-center">
-                <Col>Total: ${total}</Col> 
+            <Row className="align-items-center mt-3">
+                <Col><strong>Total:</strong> ${total}</Col> 
                 <Col className="text-right">
                     <Button as={Link} to="/checkout" variant="primary">Checkout</Button>
                 </Col>
