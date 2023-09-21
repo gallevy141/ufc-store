@@ -65,13 +65,13 @@ function CartPage() {
 
     return (
         <Container style={{ fontFamily: 'Oswald, sans-serif' }}>
-            <h2 className="mb-4 text-center">Your Shopping Cart</h2>
+            <h2 className="mb-5 text-center">Your Shopping Cart</h2>
             {cartItems.map(item => (
                 <Card key={item.productID} className="mb-3 shadow-sm">
                     <Card.Body>
                         <Row>
                             <Col xs={2}>
-                                <Card.Img variant="top" src={item.image} className="img-fluid" style={{maxHeight: '80px'}} />
+                                <Card.Img variant="top" src={item.image} className="img-fluid" style={{maxHeight: '80px', objectFit: 'cover'}} />
                             </Col>
                             <Col xs={3}>
                                 <Card.Title>{item.name}</Card.Title>
