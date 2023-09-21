@@ -1,18 +1,20 @@
 import React from 'react'
-import { Container, Row, Col, Image } from 'react-bootstrap'
+import { Container, Row, Col, Image, Card } from 'react-bootstrap'
 
 function AboutUs() {
     return (
-        <Container fluid>
+        <Container fluid style={{ fontFamily: 'Oswald, sans-serif' }}>
 
-            <div className="my-4 bg-light text-center py-4">
-                <h2>"We Are The Most Entertaining Sport On The Planet"</h2>
-                <footer className="blockquote-footer">Dana White</footer>
-            </div>
+            <Card className="my-4 bg-light text-center py-4 shadow-sm">
+                <Card.Body>
+                    <Card.Title>"We Are The Most Entertaining Sport On The Planet"</Card.Title>
+                    <Card.Footer className="blockquote-footer">Dana White</Card.Footer>
+                </Card.Body>
+            </Card>
 
             <Row className="my-4">
                 <Col md={6}>
-                <img src="/public/images/conor-belts.jpg" alt="Conor McGregor with Belts"/>
+                    <Image src="/images/conor-belts.jpg" alt="Conor McGregor with Belts" rounded fluid />
                 </Col>
                 <Col md={6}>
                     <h3>Welcome to the Ultimate Fighting Championship (UFC)</h3>
