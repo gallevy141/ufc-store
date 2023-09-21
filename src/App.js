@@ -63,7 +63,7 @@ function App() {
                     <Route path="/profile" element={<ProfilePage />} />
                     <Route path="/about" element={<AboutPage />} />
                     <Route path="/reset-password" element={<ResetPasswordPage />} />
-                    <Route path="/order-history" element={<OrderHistoryPage />} />
+                    <Route path="/profile/order-history" element={<OrderHistoryPage />} />
                     {/*other routes here as needed */}
                 </Routes>
                 <Footer />
