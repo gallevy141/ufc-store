@@ -11,7 +11,7 @@ function CheckoutPage() {
     const [selectedAddress, setSelectedAddress] = useState('')
     const [showAddAddressModal, setShowAddAddressModal] = useState(false)
     const [newAddress, setNewAddress] = useState('')
-    const BASE_URL = 'http://localhost:5000'
+    const BASE_URL = 'http://localhost:5000/api'
     
     useEffect(() => {
         async function fetchData() {
