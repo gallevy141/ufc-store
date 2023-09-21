@@ -111,3 +111,29 @@ export const updateProductQuantityInCart = async (userId, productId, quantity) =
         throw error
     }
 }
+
+export const fetchRecentOrder = async () => {
+    try {
+        const response = await axios.get(`${BASE_URL}/orders/recent`)
+        if (response.status === 200) {
+            return response.data
+        } else {
+            throw new Error('Failed to fetch recent order')
+        }
+    } catch (error) {
+        throw error
+    }
+}
+
+export const clearUserCart = async (userId) => {
+    try {
+        const response = await axios.delete(`${BASE_URL}/cart/${userId}/clear`)
+        if (response.status === 200) {
+            return response.data
+        } else {
+            throw new Error('Failed to clear the cart.')
+        }
+    } catch (error) {
+        throw error
+    }
+}
