@@ -1,40 +1,50 @@
-import React, { useState, useEffect } from 'react'
-import { Container, Row, Col, Image, Dropdown, DropdownButton, Card } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
-import { fetchProducts } from '../clientDAL'
+import React, { useState, useEffect } from 'react';
+import { Container, Row, Col, Image, Dropdown, DropdownButton, Card, InputGroup, FormControl, Button, Jumbotron } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { fetchProducts } from '../clientDAL';
 
 const Browse = () => {
-    const [products, setProducts] = useState([])
-    const [searchTerm, setSearchTerm] = useState('')
+    const [products, setProducts] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
         fetchProducts().then(data => {
-            console.log("Products fetched:", data)
-            setProducts(data)
-        }).catch(err => console.error(err))
-    }, [])
+            console.log("Products fetched:", data);
+            setProducts(data);
+        }).catch(err => console.error(err));
+    }, []);
 
     const filteredProducts = products.filter(product => 
         product.name.toLowerCase().includes(searchTerm.toLowerCase())
-    )
+    );
 
     return (
-        <Container fluid className="py-4">
+        <Container fluid className="py-4" style={{ fontFamily: 'Oswald, sans-serif' }}>
+            <Jumbotron fluid className="bg-light">
+                <Container className="text-center">
+                    <h1>UFC Product Catalogue</h1>
+                </Container>
+            </Jumbotron>
+
             <Row className="mb-4">
                 <Col>
                     <Image src="path_to_ufc_product_image.jpg" alt="UFC Product" fluid />
                 </Col>
             </Row>
 
-            <Row className="mb-4">
+            <Row className="mb-4 align-items-center">
                 <Col md={6}>
-                    <input 
-                        type="text"
-                        placeholder="Search for products..."
-                        value={searchTerm}
-                        onChange={e => setSearchTerm(e.target.value)}
-                        className="form-control" 
-                    />
+                    <InputGroup className="mb-3">
+                        <InputGroup.Prepend>
+                            <Button variant="outline-secondary">Search</Button>
+                        </InputGroup.Prepend>
+                        <FormControl 
+                            type="text"
+                            placeholder="Search for products..."
+                            value={searchTerm}
+                            onChange={e => setSearchTerm(e.target.value)}
+                        />
+                    </InputGroup>
                 </Col>
                 <Col md={6}>
                     <DropdownButton id="dropdown-basic-button" title="Sort By">
@@ -51,11 +61,14 @@ const Browse = () => {
                 {filteredProducts.map(product => (
                     <Col key={product.productID} xs={12} md={4} lg={3} className="mb-4">
                         <Link to={`/product/${product.productID}`} className="text-decoration-none text-dark">
-                            <Card>
+                            <Card className="h-100" border="light" hover>
                                 <Card.Img variant="top" src={product.image} alt={product.name} />
                                 <Card.Body>
                                     <Card.Title>{product.name}</Card.Title>
-                                    <Card.Text>{product.description || product.price}</Card.Text>
+                                    <Card.Text>{product.description}</Card.Text>
+                                    <Card.Footer>
+                                        <small className="text-muted">Price: ${product.price}</small>
+                                    </Card.Footer>
                                 </Card.Body>
                             </Card>
                         </Link>
