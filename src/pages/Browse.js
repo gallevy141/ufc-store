@@ -1,30 +1,30 @@
-import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Image, Dropdown, DropdownButton, Card, InputGroup, FormControl, Button, Jumbotron } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import { fetchProducts } from '../clientDAL';
+import React, { useState, useEffect } from 'react'
+import { Container, Row, Col, Image, Dropdown, DropdownButton, Card, InputGroup, FormControl, Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+import { fetchProducts } from '../clientDAL'
 
 const Browse = () => {
-    const [products, setProducts] = useState([]);
-    const [searchTerm, setSearchTerm] = useState('');
+    const [products, setProducts] = useState([])
+    const [searchTerm, setSearchTerm] = useState('')
 
     useEffect(() => {
         fetchProducts().then(data => {
-            console.log("Products fetched:", data);
-            setProducts(data);
-        }).catch(err => console.error(err));
-    }, []);
+            console.log("Products fetched:", data)
+            setProducts(data)
+        }).catch(err => console.error(err))
+    }, [])
 
     const filteredProducts = products.filter(product => 
         product.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    )
 
     return (
         <Container fluid className="py-4" style={{ fontFamily: 'Oswald, sans-serif' }}>
-            <Jumbotron fluid className="bg-light">
-                <Container className="text-center">
+            <Row className="mb-4 bg-light">
+                <Col className="text-center py-5">
                     <h1>UFC Product Catalogue</h1>
-                </Container>
-            </Jumbotron>
+                </Col>
+            </Row>
 
             <Row className="mb-4">
                 <Col>
