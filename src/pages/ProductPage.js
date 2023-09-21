@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Container, Row, Col, Button, Card } from 'react-bootstrap'
+import { Container, Row, Col, Button, Card, Badge } from 'react-bootstrap'
 import { useParams } from 'react-router-dom'
 import { fetchProducts, addProductToCart, getLoggedInUser } from '../clientDAL'
 
@@ -32,17 +32,22 @@ function ProductPage() {
     }
 
     return (
-        <Container>
+        <Container style={{ fontFamily: 'Oswald, sans-serif' }}>
             {product && (
                 <>
                     <Row className="my-4">
                         <Col md={6}>
-                            <img src={product.image} alt={product.name} className="img-fluid" />
+                            <img src={product.image} alt={product.name} className="img-fluid rounded shadow-sm" />
                         </Col>
                         <Col md={6}>
-                            <h4>Price: ${product.price}</h4>
-                            <p>Quantity: {product.quantity}</p>
-                            <p>Available: {product.quantity > 0 ? "Yes" : "No"}</p>
+                            <h2>{product.name}</h2>
+                            <h4 className="mb-3">Price: <Badge variant="success">${product.price}</Badge></h4>
+                            <p>Quantity: <Badge variant="info">{product.quantity}</Badge></p>
+                            <p>Available: 
+                                <Badge variant={product.quantity > 0 ? "success" : "danger"}>
+                                    {product.quantity > 0 ? "Yes" : "No"}
+                                </Badge>
+                            </p>
                             <Button variant="primary" onClick={handleAddToCart}>Add to cart</Button>
                         </Col>
                     </Row>
@@ -53,7 +58,7 @@ function ProductPage() {
                         </Col>
                     </Row>
 
-                    <Card className="my-4">
+                    <Card className="my-4 shadow-sm">
                         <Card.Body>
                             <Card.Title>Product Description</Card.Title>
                             <Card.Text>
@@ -62,7 +67,7 @@ function ProductPage() {
                         </Card.Body>
                     </Card>
 
-                    <Card className="my-4">
+                    <Card className="my-4 shadow-sm">
                         <Card.Body>
                             <Card.Title>Reviews</Card.Title>
                             <Card.Text>
