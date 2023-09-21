@@ -58,7 +58,7 @@ function CheckoutPage() {
         try {
             const userData = await getLoggedInUser()
             if (userData && userData.userId) {
-                const response = await axios.post(`${BASE_URL}/orders`, { userId: userData.userId, cartItems: cartItems })
+                const response = await axios.post(`${BASE_URL}/orders`, { userId: userData.userId, cartItems: cartItems, deliveryAddress: selectedAddress })
     
                 if (response.data.success) {
                     window.location.href = "/receipt"
