@@ -62,66 +62,71 @@ function LoginPage() {
     }
 
     return (
-        <div>
-            <Container className="mt-5">
-                <Row className="justify-content-center">
-                    <Col md={6}>
-                        <h2 className="text-center">Login</h2>
+        <Container className="mt-5" style={{ fontFamily: 'Oswald, sans-serif' }}>
+            <Row className="justify-content-center">
+                <Col md={6}>
+                    <Card className="mb-4 shadow-sm p-3">
+                        <Card.Body>
+                            <Card.Title className="text-center">Login</Card.Title>
 
-                        {error && <Alert variant="danger">{error}</Alert>}
-                        {message && <Alert variant="success">{message}</Alert>}
+                            {error && <Alert variant="danger">{error}</Alert>}
+                            {message && <Alert variant="success">{message}</Alert>}
 
-                        <Form onSubmit={e => {
-                            e.preventDefault();
-                            login()
-                        }}>
-                            <Form.Group className="mb-3" controlId="formEmail">
-                                <Form.Label>Email:</Form.Label>
-                                <Form.Control 
-                                    type="text" 
-                                    placeholder="Enter email" 
-                                    value={email} 
-                                    onChange={e => setEmail(e.target.value)}
-                                />
-                            </Form.Group>
+                            <Form onSubmit={e => {
+                                e.preventDefault();
+                                login()
+                            }}>
+                                <Form.Group className="mb-3" controlId="formEmail">
+                                    <Form.Label>Email:</Form.Label>
+                                    <Form.Control 
+                                        type="text" 
+                                        placeholder="Enter email" 
+                                        value={email} 
+                                        onChange={e => setEmail(e.target.value)}
+                                    />
+                                </Form.Group>
 
-                            <Form.Group className="mb-3" controlId="formPassword">
-                                <Form.Label>Password:</Form.Label>
-                                <Form.Control 
-                                    type="password" 
-                                    placeholder="Enter password" 
-                                    value={password} 
-                                    onChange={e => setPassword(e.target.value)}
-                                />
-                            </Form.Group>
+                                <Form.Group className="mb-3" controlId="formPassword">
+                                    <Form.Label>Password:</Form.Label>
+                                    <Form.Control 
+                                        type="password" 
+                                        placeholder="Enter password" 
+                                        value={password} 
+                                        onChange={e => setPassword(e.target.value)}
+                                    />
+                                </Form.Group>
 
-                            <div className="d-grid gap-2">
-                                <Button variant="primary" type="submit">
-                                    Login
-                                </Button>
-                            </div>
-                        </Form>
-                        <p className="mt-3 text-center">
-                            Don't have an account? <Link to="/register">Come Register</Link>
-                        </p>
+                                <div className="d-grid gap-2">
+                                    <Button variant="primary" type="submit">
+                                        Login
+                                    </Button>
+                                </div>
+                            </Form>
+                            <p className="mt-3 text-center">
+                                Don't have an account? <Link to="/register">Come Register</Link>
+                            </p>
+                        </Card.Body>
+                    </Card>
 
-                        <h2 className="text-center">Forgot your password?</h2>
-                        <Form onSubmit={e => handleResetRequest(e)}>
-                            <Form.Group className="mb-3" controlId="resetEmail">
-                                <Form.Label>Email</Form.Label>
-                                <Form.Control type="email" placeholder="Enter your email" />
-                            </Form.Group>
-                            <div className="d-grid gap-2">
-                                <Button variant="primary" type="submit">
-                                    Request Password Reset
-                                </Button>
-                            </div>
-                        </Form>
-
-                    </Col>
-                </Row>
-            </Container>
-        </div>
+                    <Card className="shadow-sm p-3">
+                        <Card.Body>
+                            <Card.Title className="text-center">Forgot your password?</Card.Title>
+                            <Form onSubmit={e => handleResetRequest(e)}>
+                                <Form.Group className="mb-3" controlId="resetEmail">
+                                    <Form.Label>Email</Form.Label>
+                                    <Form.Control type="email" placeholder="Enter your email" />
+                                </Form.Group>
+                                <div className="d-grid gap-2">
+                                    <Button variant="primary" type="submit">
+                                        Request Password Reset
+                                    </Button>
+                                </div>
+                            </Form>
+                        </Card.Body>
+                    </Card>
+                </Col>
+            </Row>
+        </Container>
     )
 }
 
