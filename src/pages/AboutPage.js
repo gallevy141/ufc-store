@@ -12,7 +12,7 @@ function AboutUs() {
 
             <Row className="my-4">
                 <Col md={6}>
-                    <Image src="path_to_ufc_image.jpg" alt="UFC" fluid />
+                <img src="/public/images/conor-belts.jpg" alt="Conor McGregor with Belts"/>
                 </Col>
                 <Col md={6}>
                     <h3>Welcome to the Ultimate Fighting Championship (UFC)</h3>

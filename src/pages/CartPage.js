@@ -15,7 +15,7 @@ function CartPage() {
                 if (userData && userData.userId) {
                     const items = await fetchCartItems(userData.userId)
                     setCartItems(items)
-    
+
                     const totalAmount = items.reduce((total, item) => {
                         const price = Number(item.price)
                         if(isNaN(price)) return total
@@ -68,7 +68,9 @@ function CartPage() {
         }, 0).toFixed(2)
 
         setTotal(total)
+
     }*/}
+
 
     return (
         <Container>
