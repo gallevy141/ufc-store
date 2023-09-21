@@ -15,20 +15,25 @@ function LoginPage() {
     const [error, setError] = useState('')
 
     const login = async () => {
-        try {
-            const response = await loginUser({ email, password })
-            setUser({ userId: response.data.userId, name: response.data.name })
-            console.log("User state after setting:", { name: response.data.name, email: email })
-            localStorage.setItem("user", JSON.stringify({ userId: response.data.userId, name: response.data.name }))
-              
-            navigate('/')
-            setMessage(response.message)
-        } catch (error) {
-            setMessage('')
-            setError(error.message)
-        }
-    }
+      try {
+          const response = await loginUser({ email, password })
 
+          if (response.status === 200) {
+            setUser({ userId: response.data.userId, name: response.data.name })
+              console.log("User state after setting:", { name: response.data.name, email: email })
+              localStorage.setItem("user", JSON.stringify({ userId: response.data.userId, name: response.data.name }))
+              
+              navigate('/')
+              setMessage(response.message)
+
+            } else {
+              setError("Invalid login response. Please try again.")
+          }
+      } catch (error) {
+          setMessage('')
+          setError(error.message)
+      }
+    }
 
     const handleResetRequest = async (e) => {
       e.preventDefault()
@@ -43,7 +48,7 @@ function LoginPage() {
               }
           })
   
-          const data = await response.json();
+          const data = await response.json()
   
           if (response.ok) {
               alert("Please check your email for password reset instructions.");
@@ -56,18 +61,19 @@ function LoginPage() {
     }
 
     return (
-        <Container className="mt-5" style={{ fontFamily: 'Oswald, sans-serif' }}>
+        <Container className="mt-5 mb-5" style={{ fontFamily: 'Oswald, sans-serif' }}>
             <Row className="justify-content-center">
                 <Col md={6}>
+
+                    <h2 className="text-center mb-4">Login</h2>
                     <Card className="mb-4 shadow-sm p-3">
                         <Card.Body>
-                            <Card.Title className="text-center">Login</Card.Title>
 
                             {error && <Alert variant="danger">{error}</Alert>}
                             {message && <Alert variant="success">{message}</Alert>}
 
                             <Form onSubmit={e => {
-                                e.preventDefault();
+                                e.preventDefault()
                                 login()
                             }}>
                                 <Form.Group className="mb-3" controlId="formEmail">
@@ -102,9 +108,9 @@ function LoginPage() {
                         </Card.Body>
                     </Card>
 
-                    <Card className="shadow-sm p-3">
+                    <h2 className="text-center mb-4">Forgot your password?</h2>
+                    <Card className="shadow-sm p-3 mb-5">
                         <Card.Body>
-                            <Card.Title className="text-center">Forgot your password?</Card.Title>
                             <Form onSubmit={e => handleResetRequest(e)}>
                                 <Form.Group className="mb-3" controlId="resetEmail">
                                     <Form.Label>Email</Form.Label>
