@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Container, Row, Col, Button, Dropdown, Card, Modal, Form } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
 import axios from 'axios'
-import { fetchCartItems, getLoggedInUser } from '../clientDAL'
+import { fetchCartItems, getLoggedInUser, clearUserCart } from '../clientDAL'
 
 function CheckoutPage() {
     const [cartItems, setCartItems] = useState([])
@@ -61,6 +60,7 @@ function CheckoutPage() {
                 const response = await axios.post(`${BASE_URL}/orders`, { userId: userData.userId, cartItems: cartItems, deliveryAddress: selectedAddress })
     
                 if (response.data.success) {
+                    await clearUserCart(userData.userId)
                     window.location.href = "/receipt"
                 } else {
                     console.error("Error creating order:", response.data.message)
