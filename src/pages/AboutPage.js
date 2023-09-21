@@ -14,7 +14,7 @@ function AboutUs() {
 
             <Row className="my-4">
                 <Col md={6}>
-                    <img src="/images/conor-belts.jpg" alt="Conor McGregor with Belts" className="img-fluid rounded" />
+                    <img src="/public/images/conor-belts.jpg" alt="Conor McGregor with Belts" className="img-fluid rounded" />
                 </Col>
                 <Col md={6}>
                     <h3>Welcome to the Ultimate Fighting Championship (UFC)</h3>
