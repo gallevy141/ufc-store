@@ -14,7 +14,7 @@ function OrderHistoryPage() {
                 const response = await axios.get(`${BASE_URL}/orders/user/${user.id}`)
 
                 if (response.status === 200) {
-                    setOrders(response.data.orders)
+                    setOrders(response.data)
                 } else {
                     console.error('Failed to fetch order history:', response.data.error || 'Unknown error')
                 }
