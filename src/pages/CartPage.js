@@ -11,17 +11,24 @@ function CartPage() {
         async function fetchCart() {
             try {
                 const userData = await getLoggedInUser()
-
+    
                 if (userData && userData.userId) {
                     const items = await fetchCartItems(userData.userId)
                     setCartItems(items)
-                    calculateTotal()
+
+                    const totalAmount = items.reduce((total, item) => {
+                        const price = Number(item.price)
+                        if(isNaN(price)) return total
+                        return total + (item.price * item.quantity)            
+                    }, 0).toFixed(2)
+    
+                    setTotal(totalAmount)
                 }
             } catch (error) {
                 console.error("Error fetching user or cart data:", error)
             }
         }
-
+    
         fetchCart()
     }, [])
 
@@ -52,7 +59,7 @@ function CartPage() {
         }
     }
 
-    const calculateTotal = () => {
+    {/*const calculateTotal = () => {
         console.log("cartItems:", cartItems)
         const total = cartItems.reduce((total, item) => {
             const price = Number(item.price)
@@ -61,7 +68,9 @@ function CartPage() {
         }, 0).toFixed(2)
 
         setTotal(total)
-    }
+
+    }*/}
+
 
     return (
         <Container>
