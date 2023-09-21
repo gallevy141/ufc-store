@@ -9,7 +9,7 @@ function ReceiptPage() {
         async function fetchOrder() {
             try {
                 const data = await fetchRecentOrder()
-                setOrderData(data);
+                setOrderData(data)
             } catch (error) {
                 console.error("Error fetching the recent order:", error)
             }
@@ -19,20 +19,24 @@ function ReceiptPage() {
     }, [])
 
     if (!orderData) {
-        return <p>Loading...</p>
+        return (
+            <Container className="text-center mt-5">
+                <p>Loading...</p>
+            </Container>
+        )
     }
 
     return (
-        <Container>
+        <Container className="text-center" style={{ fontFamily: 'Oswald, sans-serif' }}>
             <Row className="my-4">
                 <Col>
                     <h2>Your Receipt</h2>
                 </Col>
             </Row>
 
-            <Row className="my-4">
-                <Col md={6}>
-                    <Card>
+            <Row className="my-4 justify-content-center">
+                <Col md={8}>
+                    <Card className="shadow-sm">
                         <Card.Body>
                             <Card.Title>You have ordered...</Card.Title>
                             {orderData.products && orderData.products.map(product => (
@@ -57,11 +61,12 @@ function ReceiptPage() {
             <Row className="my-4">
                 <Col>
                     <h4>Thank you for your order!</h4>
-                    <p>Please come again!</p>
+                    <p>We hope to see you again soon!</p>
                 </Col>
             </Row>
         </Container>
     )
 }
+
 
 export default ReceiptPage
