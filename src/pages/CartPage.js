@@ -5,7 +5,7 @@ import { fetchCartItems, getLoggedInUser, removeProductFromCart, updateProductQu
 
 function CartPage() {
     const [cartItems, setCartItems] = useState([])
-    const [total, setTotal] = useState([])
+    const [total, setTotal] = useState('0.00')
 
     useEffect(() => {
         async function fetchCart() {
@@ -15,14 +15,7 @@ function CartPage() {
                 if (userData && userData.userId) {
                     const items = await fetchCartItems(userData.userId)
                     setCartItems(items)
-    
-                    const totalAmount = items.reduce((total, item) => {
-                        const price = Number(item.price)
-                        if(isNaN(price)) return total
-                        return total + (item.price * item.quantity)            
-                    }, 0).toFixed(2)
-    
-                    setTotal(totalAmount)
+                    calculateTotal(items) 
                 }
             } catch (error) {
                 console.error("Error fetching user or cart data:", error)
@@ -32,6 +25,16 @@ function CartPage() {
         fetchCart()
     }, [])
 
+    const calculateTotal = (items) => {
+        const totalAmount = items.reduce((total, item) => {
+            const price = Number(item.price)
+            if(isNaN(price)) return total
+            return total + (item.price * item.quantity)            
+        }, 0).toFixed(2)
+
+        setTotal(totalAmount)
+    }
+
     const handleQuantityChange = async (productId, quantity) => {
         try {
             const userData = await getLoggedInUser()
@@ -39,7 +42,7 @@ function CartPage() {
                 await updateProductQuantityInCart(userData.userId, productId, quantity)
                 const updatedItems = await fetchCartItems(userData.userId)
                 setCartItems(updatedItems)
-                calculateTotal()
+                calculateTotal(updatedItems)
             }
         } catch (error) {
             console.error("Error updating cart quantity:", error)
@@ -53,22 +56,12 @@ function CartPage() {
                 await removeProductFromCart(userData.userId, productId)
                 const updatedItems = await fetchCartItems(userData.userId)
                 setCartItems(updatedItems)
+                calculateTotal(updatedItems)
             }
         } catch (error) {
             console.error("Error removing item from cart:", error)
         }
     }
-
-    {/*const calculateTotal = () => {
-        console.log("cartItems:", cartItems)
-        const total = cartItems.reduce((total, item) => {
-            const price = Number(item.price)
-            if(isNaN(price)) return total
-            return total + (item.price * item.quantity)            
-        }, 0).toFixed(2)
-
-        setTotal(total)
-    }*/}
 
     return (
         <Container>
