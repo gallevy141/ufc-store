@@ -72,25 +72,25 @@ function CheckoutPage() {
     }
 
     return (
-        <Container>
-            <h2 className="mb-4">Checkout</h2>
+        <Container style={{ fontFamily: 'Oswald, sans-serif' }}>
+            <h2 className="mb-4 text-center">Checkout</h2>
 
             {cartItems.map(item => (
-                <Card key={item.productID} className="mb-2">
+                <Card key={item.productID} className="mb-3 shadow-sm">
                     <Card.Body>
                         <Row>
-                            <Col>{item.name}</Col>
-                            <Col>Quantity: {item.quantity}</Col>
-                            <Col>Price: ${item.price}</Col>
+                            <Col md={6}>{item.name}</Col>
+                            <Col md={3}>Quantity: {item.quantity}</Col>
+                            <Col md={3}>Price: ${item.price}</Col>
                         </Row>
                     </Card.Body>
                 </Card>
             ))}
 
             <Row className="my-4 align-items-center">
-                <Col md={8}>
+                <Col md={7}>
                     <Dropdown>
-                        <Dropdown.Toggle variant="light">
+                        <Dropdown.Toggle variant="outline-dark">
                             Address: {selectedAddress || 'Select Address'}
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
@@ -99,13 +99,14 @@ function CheckoutPage() {
                                     {address}
                                 </Dropdown.Item>
                             ))}
-                            <Dropdown.Item onClick={() => setShowAddAddressModal(true)}>Add New Address</Dropdown.Item>
+                            <Dropdown.Divider />
+                            <Dropdown.Item onClick={() => setShowAddAddressModal(true)}>+ Add New Address</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
                 </Col>
-                <Col md={4} className="text-right">
-                    Total Price: ${total}
-                    <Button variant="primary" className="ml-2" onClick={handleConfirmOrder}>Confirm Order</Button>
+                <Col md={5} className="text-right">
+                    <strong>Total Price:</strong> ${total}
+                    <Button variant="primary" className="ml-3" onClick={handleConfirmOrder}>Confirm Order</Button>
                 </Col>
             </Row>
 
@@ -122,10 +123,10 @@ function CheckoutPage() {
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={() => setShowAddAddressModal(false)}>
-                        Close
+                    <Button variant="outline-secondary" onClick={() => setShowAddAddressModal(false)}>
+                        Cancel
                     </Button>
-                    <Button variant="primary" onClick={handleAddAddress}>
+                    <Button variant="dark" onClick={handleAddAddress}>
                         Add Address
                     </Button>
                 </Modal.Footer>
