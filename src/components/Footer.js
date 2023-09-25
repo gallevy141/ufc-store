@@ -10,7 +10,7 @@ const Footer = () => {
                     <Nav>
                         <Link to="/about" className="nav-link text-white pr-3">About Us</Link>
                         <Link to="/contact" className="nav-link text-white pr-3">Contact Us</Link>
-                        <Link to="/termsandconditions" className="nav-link text-white">Terms & Conditions</Link>
+                        <Link to="/terms-and-conditions" className="nav-link text-white">Terms & Conditions</Link>
                     </Nav>
                 </Col>
                 <Col md={4} className="text-center">
