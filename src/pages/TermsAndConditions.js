@@ -6,10 +6,8 @@ function TermsAndConditions() {
         <Container className="mt-5" style={{ fontFamily: 'Oswald, sans-serif' }}>
             <Row className="justify-content-center">
                 <Col md={10}>
+                <h2 className="text-center">Terms and Conditions</h2>
                     <Card>
-                        <Card.Header className="text-center">
-                            <h2>Terms and Conditions</h2>
-                        </Card.Header>
                         <Card.Body>
                             <section>
                                 <h4>1. Introduction</h4>
