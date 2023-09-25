@@ -20,6 +20,7 @@ import AboutPage from './pages/AboutPage'
 import UserContext from './components/UserContext'
 import ResetPasswordPage from './pages/ResetPasswordPage'
 import OrderHistoryPage from './pages/OrderHistory'
+import TermsAndConditions from './pages/TermsAndConditions'
 
 axios.defaults.withCredentials = true
 
@@ -64,6 +65,7 @@ function App() {
                     <Route path="/about" element={<AboutPage />} />
                     <Route path="/reset-password" element={<ResetPasswordPage />} />
                     <Route path="/profile/order-history" element={<OrderHistoryPage />} />
+                    <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
                     {/*other routes here as needed */}
                 </Routes>
                 <Footer />
